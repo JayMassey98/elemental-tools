@@ -1,22 +1,14 @@
-## Attempt to update the target block with a matching method, perform the required results, whilst ensuring no stored items are lost.
+## Use the item to raycast targets to update a target block, prevent additional uses if a valid one is reached, then determine if the durability needs updating.
 
-# NOTE: Attempt to keep the majority of this code generalised for all tools where possible.
-# For now, variable names like rotate will be used until further elemental tools are added.
-# At that point, it might be the case that a few of these variable names need updating.
+# Raycast and Update Target Block
+execute store result score @s elemental_tools_raycast_limit run attribute @s minecraft:block_interaction_range get 20
+$execute anchored eyes positioned ^ ^ ^ run function elemental_tools:raycast {tool:"$(tool)"}
+scoreboard players reset @s elemental_tools_raycast_limit
 
-# Get the correct item slot.
-# TODO: Check Mainhand Slot
-# TODO: Check Offhand Slot
-
-# Backup any required storage for the target block.
-# TODO
-
-# Run the corresponding rotate function for the target block, which sets the position accordingly.
-# TODO: Check Axis
-# TODO: Check Facing
-# TODO: Check Rotation
-# TODO: Check Shape
-# TODO: Check Type
+# Prevent Additional Uses
+$advancement revoke @s only elemental_tools:use_$(tool)
+advancement revoke @s only elemental_tools:cooldown
+scoreboard players set @s elemental_tools_cooldown 2
 
 # Determine the durability decrementation chance based on the target block's total possible rotations.
 # TODO: Axis = 1 in 3
@@ -32,6 +24,3 @@
 # Trigger the results of a successful use of the tool.
 # TODO: Perform Effects
 # TODO: Check Durability
-
-# Restore any required storage for the target block.
-# TODO
