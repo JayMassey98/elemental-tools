@@ -1,0 +1,14 @@
+{
+  "values": [
+    "#minecraft:shulker_boxes",
+    "minecraft:barrel",
+    "minecraft:dispenser",
+    "minecraft:dropper",
+    "minecraft:end_rod",
+    "minecraft:lightning_rod",
+    "minecraft:observer",
+    "minecraft:piston",
+    "minecraft:rail",
+    "minecraft:sticky_piston"
+  ]
+}
