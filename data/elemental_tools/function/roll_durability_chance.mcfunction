@@ -18,5 +18,3 @@ execute if score @s elemental_tools_block_position matches 26..32 unless score @
 
 # For positions 33-34, set chance between 1 and 2.
 execute if score @s elemental_tools_block_position matches 33..34 store result score @s elemental_tools_durability_chance run return run random value 1..2
-
-scoreboard players reset @s elemental_tools_block_position

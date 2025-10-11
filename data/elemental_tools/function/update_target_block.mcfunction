@@ -3,5 +3,9 @@
 # Set Block Position
 $function elemental_tools:$(tool)/set_block_position
 
+# Perform Block Effects
+$function elemental_tools:$(tool)/effects
+
 # Roll Durability Chance
 function elemental_tools:roll_durability_chance
+scoreboard players reset @s elemental_tools_block_position
