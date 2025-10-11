@@ -1,4 +1,69 @@
 ## Rotate the target block in facing N/E/S/W/U/D order.
 
-# TODO: N/E/S/W/D
-# Hopper
+# Set Position
+$scoreboard players set @s elemental_tools_block_position $(position)
+
+# N/E/S/W/D - General
+$execute if block ~ ~ ~ hopper run return run setblock ~ ~ ~ hopper[facing=$(facing_neswd_next)]
+
+# N/E/S/W/U/D - General
+$execute if block ~ ~ ~ barrel run return run setblock ~ ~ ~ barrel[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ dispenser run return run setblock ~ ~ ~ dispenser[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ dropper run return run setblock ~ ~ ~ dropper[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ end_rod run return run setblock ~ ~ ~ end_rod[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ observer run return run setblock ~ ~ ~ observer[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ piston[extended=false] run return run setblock ~ ~ ~ piston[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ sticky_piston[extended=false] run return run setblock ~ ~ ~ sticky_piston[facing=$(facing_neswud_next)]
+
+# N/E/S/W/U/D - Lightning Rods
+$execute if block ~ ~ ~ exposed_lightning_rod[powered=false,waterlogged=false] run return run setblock ~ ~ ~ exposed_lightning_rod[powered=false,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ exposed_lightning_rod[powered=false,waterlogged=true] run return run setblock ~ ~ ~ exposed_lightning_rod[powered=false,waterlogged=true,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ exposed_lightning_rod[powered=true,waterlogged=false] run return run setblock ~ ~ ~ exposed_lightning_rod[powered=true,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ exposed_lightning_rod[powered=true,waterlogged=true] run return run setblock ~ ~ ~ exposed_lightning_rod[powered=true,waterlogged=true,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ lightning_rod[powered=false,waterlogged=false] run return run setblock ~ ~ ~ lightning_rod[powered=false,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ lightning_rod[powered=false,waterlogged=true] run return run setblock ~ ~ ~ lightning_rod[powered=false,waterlogged=true,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ lightning_rod[powered=true,waterlogged=false] run return run setblock ~ ~ ~ lightning_rod[powered=true,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ lightning_rod[powered=true,waterlogged=true] run return run setblock ~ ~ ~ lightning_rod[powered=true,waterlogged=true,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ oxidized_lightning_rod[powered=false,waterlogged=false] run return run setblock ~ ~ ~ oxidized_lightning_rod[powered=false,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ oxidized_lightning_rod[powered=false,waterlogged=true] run return run setblock ~ ~ ~ oxidized_lightning_rod[powered=false,waterlogged=true,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ oxidized_lightning_rod[powered=true,waterlogged=false] run return run setblock ~ ~ ~ oxidized_lightning_rod[powered=true,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ oxidized_lightning_rod[powered=true,waterlogged=true] run return run setblock ~ ~ ~ oxidized_lightning_rod[powered=true,waterlogged=true,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_exposed_lightning_rod[powered=false,waterlogged=false] run return run setblock ~ ~ ~ waxed_exposed_lightning_rod[powered=false,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_exposed_lightning_rod[powered=false,waterlogged=true] run return run setblock ~ ~ ~ waxed_exposed_lightning_rod[powered=false,waterlogged=true,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_exposed_lightning_rod[powered=true,waterlogged=false] run return run setblock ~ ~ ~ waxed_exposed_lightning_rod[powered=true,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_exposed_lightning_rod[powered=true,waterlogged=true] run return run setblock ~ ~ ~ waxed_exposed_lightning_rod[powered=true,waterlogged=true,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_lightning_rod[powered=false,waterlogged=false] run return run setblock ~ ~ ~ waxed_lightning_rod[powered=false,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_lightning_rod[powered=false,waterlogged=true] run return run setblock ~ ~ ~ waxed_lightning_rod[powered=false,waterlogged=true,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_lightning_rod[powered=true,waterlogged=false] run return run setblock ~ ~ ~ waxed_lightning_rod[powered=true,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_lightning_rod[powered=true,waterlogged=true] run return run setblock ~ ~ ~ waxed_lightning_rod[powered=true,waterlogged=true,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_oxidized_lightning_rod[powered=false,waterlogged=false] run return run setblock ~ ~ ~ waxed_oxidized_lightning_rod[powered=false,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_oxidized_lightning_rod[powered=false,waterlogged=true] run return run setblock ~ ~ ~ waxed_oxidized_lightning_rod[powered=false,waterlogged=true,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_oxidized_lightning_rod[powered=true,waterlogged=false] run return run setblock ~ ~ ~ waxed_oxidized_lightning_rod[powered=true,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_oxidized_lightning_rod[powered=true,waterlogged=true] run return run setblock ~ ~ ~ waxed_oxidized_lightning_rod[powered=true,waterlogged=true,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_weathered_lightning_rod[powered=false,waterlogged=false] run return run setblock ~ ~ ~ waxed_weathered_lightning_rod[powered=false,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_weathered_lightning_rod[powered=false,waterlogged=true] run return run setblock ~ ~ ~ waxed_weathered_lightning_rod[powered=false,waterlogged=true,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_weathered_lightning_rod[powered=true,waterlogged=false] run return run setblock ~ ~ ~ waxed_weathered_lightning_rod[powered=true,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ waxed_weathered_lightning_rod[powered=true,waterlogged=true] run return run setblock ~ ~ ~ waxed_weathered_lightning_rod[powered=true,waterlogged=true,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ weathered_lightning_rod[powered=false,waterlogged=false] run return run setblock ~ ~ ~ weathered_lightning_rod[powered=false,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ weathered_lightning_rod[powered=false,waterlogged=true] run return run setblock ~ ~ ~ weathered_lightning_rod[powered=false,waterlogged=true,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ weathered_lightning_rod[powered=true,waterlogged=false] run return run setblock ~ ~ ~ weathered_lightning_rod[powered=true,waterlogged=false,facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ weathered_lightning_rod[powered=true,waterlogged=true] run return run setblock ~ ~ ~ weathered_lightning_rod[powered=true,waterlogged=true,facing=$(facing_neswud_next)]
+
+# N/E/S/W/U/D - Shulker Boxes
+$execute if block ~ ~ ~ black_shulker_box run return run setblock ~ ~ ~ black_shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ blue_shulker_box run return run setblock ~ ~ ~ blue_shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ brown_shulker_box run return run setblock ~ ~ ~ brown_shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ cyan_shulker_box run return run setblock ~ ~ ~ cyan_shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ gray_shulker_box run return run setblock ~ ~ ~ gray_shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ green_shulker_box run return run setblock ~ ~ ~ green_shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ light_blue_shulker_box run return run setblock ~ ~ ~ light_blue_shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ light_gray_shulker_box run return run setblock ~ ~ ~ light_gray_shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ lime_shulker_box run return run setblock ~ ~ ~ lime_shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ magenta_shulker_box run return run setblock ~ ~ ~ magenta_shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ orange_shulker_box run return run setblock ~ ~ ~ orange_shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ pink_shulker_box run return run setblock ~ ~ ~ pink_shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ purple_shulker_box run return run setblock ~ ~ ~ purple_shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ red_shulker_box run return run setblock ~ ~ ~ red_shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ shulker_box run return run setblock ~ ~ ~ shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ white_shulker_box run return run setblock ~ ~ ~ white_shulker_box[facing=$(facing_neswud_next)]
+$execute if block ~ ~ ~ yellow_shulker_box run return run setblock ~ ~ ~ yellow_shulker_box[facing=$(facing_neswud_next)]

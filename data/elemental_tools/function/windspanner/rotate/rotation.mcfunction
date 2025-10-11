@@ -1,6 +1,104 @@
 ## Rotate the target block in rotation 0-15 order.
 
-# TODO: 0-15
-# All Floor Signs
-# All Hanging Signs
-# All Heads
+# Set Position
+$scoreboard players set @s elemental_tools_block_position $(position)
+
+# 0-15 - Floor Signs (Waterlogged = False)
+$execute if block ~ ~ ~ acacia_sign[waterlogged=false] run return run setblock ~ ~ ~ acacia_sign[waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ bamboo_sign[waterlogged=false] run return run setblock ~ ~ ~ bamboo_sign[waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ birch_sign[waterlogged=false] run return run setblock ~ ~ ~ birch_sign[waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ cherry_sign[waterlogged=false] run return run setblock ~ ~ ~ cherry_sign[waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ crimson_sign[waterlogged=false] run return run setblock ~ ~ ~ crimson_sign[waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ dark_oak_sign[waterlogged=false] run return run setblock ~ ~ ~ dark_oak_sign[waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ jungle_sign[waterlogged=false] run return run setblock ~ ~ ~ jungle_sign[waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ mangrove_sign[waterlogged=false] run return run setblock ~ ~ ~ mangrove_sign[waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ oak_sign[waterlogged=false] run return run setblock ~ ~ ~ oak_sign[waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ pale_oak_sign[waterlogged=false] run return run setblock ~ ~ ~ pale_oak_sign[waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ spruce_sign[waterlogged=false] run return run setblock ~ ~ ~ spruce_sign[waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ warped_sign[waterlogged=false] run return run setblock ~ ~ ~ warped_sign[waterlogged=false,rotation=$(rotation_next)]
+
+# 0-15 - Floor Signs (Waterlogged = True)
+$execute if block ~ ~ ~ acacia_sign[waterlogged=true] run return run setblock ~ ~ ~ acacia_sign[waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ bamboo_sign[waterlogged=true] run return run setblock ~ ~ ~ bamboo_sign[waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ birch_sign[waterlogged=true] run return run setblock ~ ~ ~ birch_sign[waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ cherry_sign[waterlogged=true] run return run setblock ~ ~ ~ cherry_sign[waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ crimson_sign[waterlogged=true] run return run setblock ~ ~ ~ crimson_sign[waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ dark_oak_sign[waterlogged=true] run return run setblock ~ ~ ~ dark_oak_sign[waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ jungle_sign[waterlogged=true] run return run setblock ~ ~ ~ jungle_sign[waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ mangrove_sign[waterlogged=true] run return run setblock ~ ~ ~ mangrove_sign[waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ oak_sign[waterlogged=true] run return run setblock ~ ~ ~ oak_sign[waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ pale_oak_sign[waterlogged=true] run return run setblock ~ ~ ~ pale_oak_sign[waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ spruce_sign[waterlogged=true] run return run setblock ~ ~ ~ spruce_sign[waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ warped_sign[waterlogged=true] run return run setblock ~ ~ ~ warped_sign[waterlogged=true,rotation=$(rotation_next)]
+
+# 0-15 - Hanging Signs (Attached = False, Waterlogged = False)
+$execute if block ~ ~ ~ acacia_hanging_sign[attached=false,waterlogged=false] run return run setblock ~ ~ ~ acacia_hanging_sign[attached=false,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ bamboo_hanging_sign[attached=false,waterlogged=false] run return run setblock ~ ~ ~ bamboo_hanging_sign[attached=false,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ birch_hanging_sign[attached=false,waterlogged=false] run return run setblock ~ ~ ~ birch_hanging_sign[attached=false,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ cherry_hanging_sign[attached=false,waterlogged=false] run return run setblock ~ ~ ~ cherry_hanging_sign[attached=false,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ crimson_hanging_sign[attached=false,waterlogged=false] run return run setblock ~ ~ ~ crimson_hanging_sign[attached=false,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ dark_oak_hanging_sign[attached=false,waterlogged=false] run return run setblock ~ ~ ~ dark_oak_hanging_sign[attached=false,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ jungle_hanging_sign[attached=false,waterlogged=false] run return run setblock ~ ~ ~ jungle_hanging_sign[attached=false,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ mangrove_hanging_sign[attached=false,waterlogged=false] run return run setblock ~ ~ ~ mangrove_hanging_sign[attached=false,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ oak_hanging_sign[attached=false,waterlogged=false] run return run setblock ~ ~ ~ oak_hanging_sign[attached=false,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ pale_oak_hanging_sign[attached=false,waterlogged=false] run return run setblock ~ ~ ~ pale_oak_hanging_sign[attached=false,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ spruce_hanging_sign[attached=false,waterlogged=false] run return run setblock ~ ~ ~ spruce_hanging_sign[attached=false,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ warped_hanging_sign[attached=false,waterlogged=false] run return run setblock ~ ~ ~ warped_hanging_sign[attached=false,waterlogged=false,rotation=$(rotation_next)]
+
+# 0-15 - Hanging Signs (Attached = False, Waterlogged = True)
+$execute if block ~ ~ ~ acacia_hanging_sign[attached=false,waterlogged=true] run return run setblock ~ ~ ~ acacia_hanging_sign[attached=false,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ bamboo_hanging_sign[attached=false,waterlogged=true] run return run setblock ~ ~ ~ bamboo_hanging_sign[attached=false,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ birch_hanging_sign[attached=false,waterlogged=true] run return run setblock ~ ~ ~ birch_hanging_sign[attached=false,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ cherry_hanging_sign[attached=false,waterlogged=true] run return run setblock ~ ~ ~ cherry_hanging_sign[attached=false,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ crimson_hanging_sign[attached=false,waterlogged=true] run return run setblock ~ ~ ~ crimson_hanging_sign[attached=false,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ dark_oak_hanging_sign[attached=false,waterlogged=true] run return run setblock ~ ~ ~ dark_oak_hanging_sign[attached=false,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ jungle_hanging_sign[attached=false,waterlogged=true] run return run setblock ~ ~ ~ jungle_hanging_sign[attached=false,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ mangrove_hanging_sign[attached=false,waterlogged=true] run return run setblock ~ ~ ~ mangrove_hanging_sign[attached=false,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ oak_hanging_sign[attached=false,waterlogged=true] run return run setblock ~ ~ ~ oak_hanging_sign[attached=false,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ pale_oak_hanging_sign[attached=false,waterlogged=true] run return run setblock ~ ~ ~ pale_oak_hanging_sign[attached=false,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ spruce_hanging_sign[attached=false,waterlogged=true] run return run setblock ~ ~ ~ spruce_hanging_sign[attached=false,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ warped_hanging_sign[attached=false,waterlogged=true] run return run setblock ~ ~ ~ warped_hanging_sign[attached=false,waterlogged=true,rotation=$(rotation_next)]
+
+# 0-15 - Hanging Signs (Attached = True, Waterlogged = False)
+$execute if block ~ ~ ~ acacia_hanging_sign[attached=true,waterlogged=false] run return run setblock ~ ~ ~ acacia_hanging_sign[attached=true,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ bamboo_hanging_sign[attached=true,waterlogged=false] run return run setblock ~ ~ ~ bamboo_hanging_sign[attached=true,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ birch_hanging_sign[attached=true,waterlogged=false] run return run setblock ~ ~ ~ birch_hanging_sign[attached=true,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ cherry_hanging_sign[attached=true,waterlogged=false] run return run setblock ~ ~ ~ cherry_hanging_sign[attached=true,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ crimson_hanging_sign[attached=true,waterlogged=false] run return run setblock ~ ~ ~ crimson_hanging_sign[attached=true,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ dark_oak_hanging_sign[attached=true,waterlogged=false] run return run setblock ~ ~ ~ dark_oak_hanging_sign[attached=true,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ jungle_hanging_sign[attached=true,waterlogged=false] run return run setblock ~ ~ ~ jungle_hanging_sign[attached=true,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ mangrove_hanging_sign[attached=true,waterlogged=false] run return run setblock ~ ~ ~ mangrove_hanging_sign[attached=true,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ oak_hanging_sign[attached=true,waterlogged=false] run return run setblock ~ ~ ~ oak_hanging_sign[attached=true,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ pale_oak_hanging_sign[attached=true,waterlogged=false] run return run setblock ~ ~ ~ pale_oak_hanging_sign[attached=true,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ spruce_hanging_sign[attached=true,waterlogged=false] run return run setblock ~ ~ ~ spruce_hanging_sign[attached=true,waterlogged=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ warped_hanging_sign[attached=true,waterlogged=false] run return run setblock ~ ~ ~ warped_hanging_sign[attached=true,waterlogged=false,rotation=$(rotation_next)]
+
+# 0-15 - Hanging Signs (Attached = True, Waterlogged = True)
+$execute if block ~ ~ ~ acacia_hanging_sign[attached=true,waterlogged=true] run return run setblock ~ ~ ~ acacia_hanging_sign[attached=true,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ bamboo_hanging_sign[attached=true,waterlogged=true] run return run setblock ~ ~ ~ bamboo_hanging_sign[attached=true,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ birch_hanging_sign[attached=true,waterlogged=true] run return run setblock ~ ~ ~ birch_hanging_sign[attached=true,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ cherry_hanging_sign[attached=true,waterlogged=true] run return run setblock ~ ~ ~ cherry_hanging_sign[attached=true,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ crimson_hanging_sign[attached=true,waterlogged=true] run return run setblock ~ ~ ~ crimson_hanging_sign[attached=true,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ dark_oak_hanging_sign[attached=true,waterlogged=true] run return run setblock ~ ~ ~ dark_oak_hanging_sign[attached=true,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ jungle_hanging_sign[attached=true,waterlogged=true] run return run setblock ~ ~ ~ jungle_hanging_sign[attached=true,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ mangrove_hanging_sign[attached=true,waterlogged=true] run return run setblock ~ ~ ~ mangrove_hanging_sign[attached=true,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ oak_hanging_sign[attached=true,waterlogged=true] run return run setblock ~ ~ ~ oak_hanging_sign[attached=true,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ pale_oak_hanging_sign[attached=true,waterlogged=true] run return run setblock ~ ~ ~ pale_oak_hanging_sign[attached=true,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ spruce_hanging_sign[attached=true,waterlogged=true] run return run setblock ~ ~ ~ spruce_hanging_sign[attached=true,waterlogged=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ warped_hanging_sign[attached=true,waterlogged=true] run return run setblock ~ ~ ~ warped_hanging_sign[attached=true,waterlogged=true,rotation=$(rotation_next)]
+
+# 0-15 - Heads
+$execute if block ~ ~ ~ skeleton_skull[powered=false] run return run setblock ~ ~ ~ skeleton_skull[powered=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ skeleton_skull[powered=true] run return run setblock ~ ~ ~ skeleton_skull[powered=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ wither_skeleton_skull[powered=false] run return run setblock ~ ~ ~ wither_skeleton_skull[powered=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ wither_skeleton_skull[powered=true] run return run setblock ~ ~ ~ wither_skeleton_skull[powered=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ player_head[powered=false] run return run setblock ~ ~ ~ player_head[powered=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ player_head[powered=true] run return run setblock ~ ~ ~ player_head[powered=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ zombie_head[powered=false] run return run setblock ~ ~ ~ zombie_head[powered=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ zombie_head[powered=true] run return run setblock ~ ~ ~ zombie_head[powered=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ creeper_head[powered=false] run return run setblock ~ ~ ~ creeper_head[powered=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ creeper_head[powered=true] run return run setblock ~ ~ ~ creeper_head[powered=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ piglin_head[powered=false] run return run setblock ~ ~ ~ piglin_head[powered=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ piglin_head[powered=true] run return run setblock ~ ~ ~ piglin_head[powered=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ dragon_head[powered=false] run return run setblock ~ ~ ~ dragon_head[powered=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ dragon_head[powered=true] run return run setblock ~ ~ ~ dragon_head[powered=true,rotation=$(rotation_next)]

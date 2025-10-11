@@ -1,13 +1,7 @@
-## Update the target block with a matching method, then perform the resulting effects, ensuring no stored items are lost.
-
-# Backup Block Storage
-# TODO
+## Update the target block with a matching method, then perform the resulting effects.
 
 # Set Block Position
 $function elemental_tools:$(tool)/set_block_position
-
-# Restore Block Storage
-# TODO
 
 # Roll Durability Chance
 function elemental_tools:roll_durability_chance
