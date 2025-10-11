@@ -8,3 +8,6 @@ $function elemental_tools:$(tool)/set_block_position
 
 # Restore Block Storage
 # TODO
+
+# Roll Durability Chance
+function elemental_tools:roll_durability_chance

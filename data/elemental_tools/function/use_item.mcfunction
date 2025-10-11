@@ -10,17 +10,28 @@ $advancement revoke @s only elemental_tools:use_$(tool)
 advancement revoke @s only elemental_tools:cooldown
 scoreboard players set @s elemental_tools_cooldown 2
 
-# Determine the durability decrementation chance based on the target block's total possible rotations.
-# TODO: Axis = 1 in 3
-# TODO: Facing + #elemental_tools:positions_8 = 1 in 8
-# TODO: Facing + #elemental_tools:positions_6 = 1 in 6
-# TODO: Facing + #elemental_tools:positions_5 = 1 in 5
-# TODO: Facing + not inside any positions tag = 1 in 4
-# TODO: Rotation = 1 in 16
-# TODO: Shape + #elemental_tools:positions_6 = 1 in 6
-# TODO: Shape + not inside any positions tag = 1 in 2
-# TODO: Type = 1 in 2
+# Determine Durability Update
+execute if entity @s[gamemode=creative] run return 0
+execute unless score @s elemental_tools_durability_chance matches 1 run return 0
 
-# Trigger the results of a successful use of the tool.
-# TODO: Perform Effects
-# TODO: Check Durability
+# Get Current Durability
+scoreboard players set @s elemental_tools_item_hand 0
+$execute if entity @s[nbt={equipment:{offhand:{id:"$(id)",components:{"minecraft:custom_data":{"$(tool)":1b}}}}}] run scoreboard players set @s elemental_tools_item_hand -1
+$execute if entity @s[nbt={SelectedItem:{id:"$(id)",count:1,components:{"minecraft:custom_data":{"$(tool)":1b}}}}] run scoreboard players set @s elemental_tools_item_hand 1
+execute if score @s elemental_tools_item_hand matches 1 store result score @s elemental_tools_item_damage run data get entity @s SelectedItem.components."minecraft:damage"
+execute if score @s elemental_tools_item_hand matches -1 store result score @s elemental_tools_item_damage run data get entity @s equipment.offhand.components."minecraft:damage"
+
+# Set New Durability
+scoreboard players add @s elemental_tools_item_damage 1
+execute store result storage elemental_tools damage int 1 run scoreboard players get @s elemental_tools_item_damage
+#execute with storage elemental_tools as @s if score @s elemental_tools_item_hand matches 1 run item modify entity @s weapon {"function":"minecraft:set_components","components":{"minecraft:damage":$(damage)}}
+#execute with storage elemental_tools as @s if score @s elemental_tools_item_hand matches -1 run item modify entity @s weapon.offhand {"function":"minecraft:set_components","components":{"minecraft:damage":$(damage)}}
+function elemental_tools:set_item_damage with storage elemental_tools
+
+# Determine Item Break
+execute if score @s elemental_tools_item_damage matches ..255 run return 0
+execute unless score @s elemental_tools_item_hand matches ..-1 run item replace entity @s weapon.mainhand with air
+execute if score @s elemental_tools_item_hand matches ..-1 run item replace entity @s weapon.offhand with air
+
+# Perform Effects
+# TODO
