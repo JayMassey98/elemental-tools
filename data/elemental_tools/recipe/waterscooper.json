@@ -1,0 +1,39 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    "minecraft:breeze_rod",
+    "minecraft:heart_of_the_sea"
+  ],
+  "result": {
+    "id": "minecraft:breeze_rod",
+    "components": {
+      "minecraft:consumable": {
+        "consume_seconds": 2147483647,
+        "has_consume_particles": false
+      },
+      "minecraft:custom_data": {
+        "waterscooper": true
+      },
+      "minecraft:custom_model_data": {
+        "strings": [
+          "waterscooper"
+        ]
+      },
+      "minecraft:item_name": "Waterscooper",
+      "minecraft:max_damage": 255,
+      "minecraft:max_stack_size": 1,
+      "minecraft:tool": {
+        "damage_per_block": 1,
+        "default_mining_speed": 1,
+        "rules": [
+          {
+            "blocks": "#mineable/hoe",
+            "correct_for_drops": false,
+            "speed": 1
+          }
+        ]
+      }
+    }
+  }
+}

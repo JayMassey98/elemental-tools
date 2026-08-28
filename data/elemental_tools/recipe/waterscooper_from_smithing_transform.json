@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:smithing_transform",
+  "base": "minecraft:breeze_rod",
+  "addition": "minecraft:netherite_ingot",
+  "template": "minecraft:book",
+  "result": {
+    "id": "minecraft:breeze_rod",
+    "components": {
+      "minecraft:consumable": {
+        "consume_seconds": 2147483647,
+        "has_consume_particles": false
+      },
+      "minecraft:custom_data": {
+        "waterscooper": true
+      },
+      "minecraft:custom_model_data": {
+        "strings": [
+          "waterscooper"
+        ]
+      },
+      "minecraft:enchantment_glint_override": true,
+      "minecraft:item_name": "Waterscooper",
+      "minecraft:max_damage": 255,
+      "minecraft:max_stack_size": 1,
+      "minecraft:rarity": "rare",
+      "minecraft:stored_enchantments": {
+        "minecraft:mending": 1
+      },
+      "minecraft:tool": {
+        "damage_per_block": 1,
+        "default_mining_speed": 1,
+        "rules": [
+          {
+            "blocks": "#mineable/hoe",
+            "correct_for_drops": false,
+            "speed": 1
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "use_item": {
+      "trigger": "minecraft:using_item",
+      "conditions": {
+        "item": {
+          "predicates": {
+            "minecraft:custom_data": {
+              "waterscooper": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "elemental_tools:waterscooper/use"
+  }
+}
