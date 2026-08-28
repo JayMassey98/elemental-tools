@@ -1,7 +1,7 @@
 ## Rotate the target block in rotation 0-15 order.
 
 # Set Position
-$scoreboard players set @s elemental_tools_block_position $(position)
+$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
 
 # 0-15 - Floor Signs (Waterlogged = False)
 $execute if block ~ ~ ~ acacia_sign[waterlogged=false] run return run setblock ~ ~ ~ acacia_sign[waterlogged=false,rotation=$(rotation_next)]
@@ -87,18 +87,18 @@ $execute if block ~ ~ ~ pale_oak_hanging_sign[attached=true,waterlogged=true] ru
 $execute if block ~ ~ ~ spruce_hanging_sign[attached=true,waterlogged=true] run return run setblock ~ ~ ~ spruce_hanging_sign[attached=true,waterlogged=true,rotation=$(rotation_next)]
 $execute if block ~ ~ ~ warped_hanging_sign[attached=true,waterlogged=true] run return run setblock ~ ~ ~ warped_hanging_sign[attached=true,waterlogged=true,rotation=$(rotation_next)]
 
-# 0-15 - Heads
+# 0-15 - Skulls
+$execute if block ~ ~ ~ creeper_head[powered=false] run return run setblock ~ ~ ~ creeper_head[powered=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ creeper_head[powered=true] run return run setblock ~ ~ ~ creeper_head[powered=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ dragon_head[powered=false] run return run setblock ~ ~ ~ dragon_head[powered=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ dragon_head[powered=true] run return run setblock ~ ~ ~ dragon_head[powered=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ piglin_head[powered=false] run return run setblock ~ ~ ~ piglin_head[powered=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ piglin_head[powered=true] run return run setblock ~ ~ ~ piglin_head[powered=true,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ player_head[powered=false] run return run setblock ~ ~ ~ player_head[powered=false,rotation=$(rotation_next)]
+$execute if block ~ ~ ~ player_head[powered=true] run return run setblock ~ ~ ~ player_head[powered=true,rotation=$(rotation_next)]
 $execute if block ~ ~ ~ skeleton_skull[powered=false] run return run setblock ~ ~ ~ skeleton_skull[powered=false,rotation=$(rotation_next)]
 $execute if block ~ ~ ~ skeleton_skull[powered=true] run return run setblock ~ ~ ~ skeleton_skull[powered=true,rotation=$(rotation_next)]
 $execute if block ~ ~ ~ wither_skeleton_skull[powered=false] run return run setblock ~ ~ ~ wither_skeleton_skull[powered=false,rotation=$(rotation_next)]
 $execute if block ~ ~ ~ wither_skeleton_skull[powered=true] run return run setblock ~ ~ ~ wither_skeleton_skull[powered=true,rotation=$(rotation_next)]
-$execute if block ~ ~ ~ player_head[powered=false] run return run setblock ~ ~ ~ player_head[powered=false,rotation=$(rotation_next)]
-$execute if block ~ ~ ~ player_head[powered=true] run return run setblock ~ ~ ~ player_head[powered=true,rotation=$(rotation_next)]
 $execute if block ~ ~ ~ zombie_head[powered=false] run return run setblock ~ ~ ~ zombie_head[powered=false,rotation=$(rotation_next)]
 $execute if block ~ ~ ~ zombie_head[powered=true] run return run setblock ~ ~ ~ zombie_head[powered=true,rotation=$(rotation_next)]
-$execute if block ~ ~ ~ creeper_head[powered=false] run return run setblock ~ ~ ~ creeper_head[powered=false,rotation=$(rotation_next)]
-$execute if block ~ ~ ~ creeper_head[powered=true] run return run setblock ~ ~ ~ creeper_head[powered=true,rotation=$(rotation_next)]
-$execute if block ~ ~ ~ piglin_head[powered=false] run return run setblock ~ ~ ~ piglin_head[powered=false,rotation=$(rotation_next)]
-$execute if block ~ ~ ~ piglin_head[powered=true] run return run setblock ~ ~ ~ piglin_head[powered=true,rotation=$(rotation_next)]
-$execute if block ~ ~ ~ dragon_head[powered=false] run return run setblock ~ ~ ~ dragon_head[powered=false,rotation=$(rotation_next)]
-$execute if block ~ ~ ~ dragon_head[powered=true] run return run setblock ~ ~ ~ dragon_head[powered=true,rotation=$(rotation_next)]

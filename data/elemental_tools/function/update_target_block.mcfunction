@@ -8,4 +8,4 @@ $function elemental_tools:$(tool)/effects
 
 # Roll Durability Chance
 function elemental_tools:roll_durability_chance
-scoreboard players reset @s elemental_tools_block_position
+scoreboard players reset @s elemental_tools_durability_chance_maximum

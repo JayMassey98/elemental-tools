@@ -1,7 +1,7 @@
 ## Rotate the target block in axis X/Y/Z order.
 
 # Set Position
-$scoreboard players set @s elemental_tools_block_position $(position) 
+$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
 
 # X/Y/Z - General
 $execute if block ~ ~ ~ acacia_log run return run setblock ~ ~ ~ acacia_log[axis=$(axis_next)]

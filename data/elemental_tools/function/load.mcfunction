@@ -1,8 +1,8 @@
 ## Add the required scoreboard objectives for the datapack to function.
 
-scoreboard objectives add elemental_tools_block_position dummy
 scoreboard objectives add elemental_tools_cooldown dummy
 scoreboard objectives add elemental_tools_durability_chance dummy
+scoreboard objectives add elemental_tools_durability_chance_maximum dummy
 scoreboard objectives add elemental_tools_item_damage dummy
 scoreboard objectives add elemental_tools_item_hand dummy
 scoreboard objectives add elemental_tools_raycast_limit dummy

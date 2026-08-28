@@ -1,7 +1,7 @@
 ## Rotate the target block in facing N/E/S/W/U/D order.
 
 # Set Position
-$scoreboard players set @s elemental_tools_block_position $(position)
+$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
 
 # N/E/S/W - Stairs
 $execute if block ~ ~ ~ acacia_stairs[waterlogged=$(waterlogged)] run return run setblock ~ ~ ~ acacia_stairs[facing=$(facing_nesw_next),half=$(half),waterlogged=$(waterlogged)]

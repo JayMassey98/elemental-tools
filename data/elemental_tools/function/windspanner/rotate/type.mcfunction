@@ -1,7 +1,7 @@
 ## Rotate the target block in type T/B order.
 
 # Set Position
-$scoreboard players set @s elemental_tools_block_position $(position)
+$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
 
 # T/B - General
 $execute if block ~ ~ ~ acacia_slab[waterlogged=$(waterlogged)] run return run setblock ~ ~ ~ acacia_slab[waterlogged=$(waterlogged),type=$(type_next)]

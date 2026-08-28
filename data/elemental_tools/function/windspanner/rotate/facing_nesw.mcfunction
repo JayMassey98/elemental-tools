@@ -1,7 +1,7 @@
 ## Rotate the target block in facing N/E/S/W/U/D order.
 
 # Set Position
-$scoreboard players set @s elemental_tools_block_position $(position)
+$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
 
 # N/E/S/W - Beehives
 $execute if block ~ ~ ~ bee_nest[honey_level=0] run return run setblock ~ ~ ~ bee_nest[honey_level=0,facing=$(facing_nesw_next)]
@@ -389,8 +389,14 @@ $execute if block ~ ~ ~ red_glazed_terracotta run return run setblock ~ ~ ~ red_
 $execute if block ~ ~ ~ white_glazed_terracotta run return run setblock ~ ~ ~ white_glazed_terracotta[facing=$(facing_nesw_next)]
 $execute if block ~ ~ ~ yellow_glazed_terracotta run return run setblock ~ ~ ~ yellow_glazed_terracotta[facing=$(facing_nesw_next)]
 
+# Set Position
+$scoreboard players set @s elemental_tools_durability_chance_maximum $(states_2)
+
 # N/E/S/W/D - General
 $execute if block ~ ~ ~ hopper run return run setblock ~ ~ ~ hopper[facing=$(facing_neswd_next)]
+
+# Set Position
+$scoreboard players set @s elemental_tools_durability_chance_maximum $(states_3)
 
 # N/E/S/W/U/D - General
 $execute if block ~ ~ ~ barrel run return run setblock ~ ~ ~ barrel[facing=$(facing_neswud_next)]

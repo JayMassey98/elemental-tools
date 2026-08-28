@@ -1,10 +1,13 @@
 ## Rotate the target block in facing N/E/S/W/U/D order.
 
 # Set Position
-$scoreboard players set @s elemental_tools_block_position $(position)
+$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
 
 # N/E/S/W/D - General
 $execute if block ~ ~ ~ hopper run return run setblock ~ ~ ~ hopper[facing=$(facing_neswd_next)]
+
+# Set Position
+$scoreboard players set @s elemental_tools_durability_chance_maximum $(states_2)
 
 # N/E/S/W/U/D - General
 $execute if block ~ ~ ~ barrel run return run setblock ~ ~ ~ barrel[facing=$(facing_neswud_next)]

@@ -1,0 +1,1 @@
+## Intentionally empty; allows raycast code to be generalised.
