@@ -1,8 +1,5 @@
 ## Change blocks with specific facing (N/E/S/W/U/D) properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # N/E/S/W - Copper Chests
 $execute if block ~ ~ ~ copper_chest run return run setblock ~ ~ ~ copper_chest[facing=$(facing),type=$(type),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ exposed_copper_chest run return run setblock ~ ~ ~ exposed_copper_chest[facing=$(facing),type=$(type),waterlogged=$(waterlogged)]

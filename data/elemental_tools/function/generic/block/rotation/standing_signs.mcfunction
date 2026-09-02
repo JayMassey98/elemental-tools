@@ -1,8 +1,5 @@
 ## Change blocks with specific rotation (0-15) properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # 0-15 - Standing Signs
 $execute if block ~ ~ ~ acacia_sign run return run setblock ~ ~ ~ acacia_sign[rotation=$(rotation),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ bamboo_sign run return run setblock ~ ~ ~ bamboo_sign[rotation=$(rotation),waterlogged=$(waterlogged)]

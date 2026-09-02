@@ -4,8 +4,15 @@
 $scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
 
 # X/Y/Z - Chains
-$execute if block ~ ~ ~ #minecraft:chains[waterlogged=false] run return run function elemental_tools:generic/block/axis/chains {states:2,axis:"$(axis_next)",waterlogged:"false"}
-$execute if block ~ ~ ~ #minecraft:chains[waterlogged=true] run return run function elemental_tools:generic/block/axis/chains {states:2,axis:"$(axis_next)",waterlogged:"true"}
+$execute if block ~ ~ ~ #minecraft:chains[waterlogged=$(waterlogged)] run return run function elemental_tools:generic/block/axis/chains {axis:"$(axis_next)",waterlogged:"$(waterlogged)"}
+
+# X/Y/Z - Creaking Heart
+$execute if block ~ ~ ~ creaking_heart[creaking_heart_state=awake,natural=false] run return run setblock ~ ~ ~ creaking_heart[axis=$(axis_next),creaking_heart_state=awake,natural=false]
+$execute if block ~ ~ ~ creaking_heart[creaking_heart_state=awake,natural=true] run return run setblock ~ ~ ~ creaking_heart[axis=$(axis_next),creaking_heart_state=awake,natural=true]
+$execute if block ~ ~ ~ creaking_heart[creaking_heart_state=dormant,natural=false] run return run setblock ~ ~ ~ creaking_heart[axis=$(axis_next),creaking_heart_state=dormant,natural=false]
+$execute if block ~ ~ ~ creaking_heart[creaking_heart_state=dormant,natural=true] run return run setblock ~ ~ ~ creaking_heart[axis=$(axis_next),creaking_heart_state=dormant,natural=true]
+$execute if block ~ ~ ~ creaking_heart[creaking_heart_state=uprooted,natural=false] run return run setblock ~ ~ ~ creaking_heart[axis=$(axis_next),creaking_heart_state=uprooted,natural=false]
+$execute if block ~ ~ ~ creaking_heart[creaking_heart_state=uprooted,natural=true] run return run setblock ~ ~ ~ creaking_heart[axis=$(axis_next),creaking_heart_state=uprooted,natural=true]
 
 # X/Y/Z - General
 $execute if block ~ ~ ~ acacia_log run return run setblock ~ ~ ~ acacia_log[axis=$(axis_next)]
@@ -17,12 +24,6 @@ $execute if block ~ ~ ~ birch_wood run return run setblock ~ ~ ~ birch_wood[axis
 $execute if block ~ ~ ~ bone_block run return run setblock ~ ~ ~ bone_block[axis=$(axis_next)]
 $execute if block ~ ~ ~ cherry_log run return run setblock ~ ~ ~ cherry_log[axis=$(axis_next)]
 $execute if block ~ ~ ~ cherry_wood run return run setblock ~ ~ ~ cherry_wood[axis=$(axis_next)]
-$execute if block ~ ~ ~ creaking_heart[creaking_heart_state=awake,natural=false] run return run setblock ~ ~ ~ creaking_heart[creaking_heart_state=awake,natural=false,axis=$(axis_next)]
-$execute if block ~ ~ ~ creaking_heart[creaking_heart_state=awake,natural=true] run return run setblock ~ ~ ~ creaking_heart[creaking_heart_state=awake,natural=true,axis=$(axis_next)]
-$execute if block ~ ~ ~ creaking_heart[creaking_heart_state=dormant,natural=false] run return run setblock ~ ~ ~ creaking_heart[creaking_heart_state=dormant,natural=false,axis=$(axis_next)]
-$execute if block ~ ~ ~ creaking_heart[creaking_heart_state=dormant,natural=true] run return run setblock ~ ~ ~ creaking_heart[creaking_heart_state=dormant,natural=true,axis=$(axis_next)]
-$execute if block ~ ~ ~ creaking_heart[creaking_heart_state=uprooted,natural=false] run return run setblock ~ ~ ~ creaking_heart[creaking_heart_state=uprooted,natural=false,axis=$(axis_next)]
-$execute if block ~ ~ ~ creaking_heart[creaking_heart_state=uprooted,natural=true] run return run setblock ~ ~ ~ creaking_heart[creaking_heart_state=uprooted,natural=true,axis=$(axis_next)]
 $execute if block ~ ~ ~ crimson_stem run return run setblock ~ ~ ~ crimson_stem[axis=$(axis_next)]
 $execute if block ~ ~ ~ crimson_hyphae run return run setblock ~ ~ ~ crimson_hyphae[axis=$(axis_next)]
 $execute if block ~ ~ ~ dark_oak_log run return run setblock ~ ~ ~ dark_oak_log[axis=$(axis_next)]

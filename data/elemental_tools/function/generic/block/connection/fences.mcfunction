@@ -1,8 +1,5 @@
 ## Change blocks with specific connection (N+E+S+W+U+D) properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # N+E+S+W - Fences
 $execute if block ~ ~ ~ acacia_fence run return run setblock ~ ~ ~ acacia_fence[east=$(east),north=$(north),south=$(south),waterlogged=$(waterlogged),west=$(west)]
 $execute if block ~ ~ ~ bamboo_fence run return run setblock ~ ~ ~ bamboo_fence[east=$(east),north=$(north),south=$(south),waterlogged=$(waterlogged),west=$(west)]

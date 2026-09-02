@@ -1,8 +1,5 @@
 ## Change blocks with specific facing (N/E/S/W/U/D) properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # N/E/S/W - Buttons
 $execute if block ~ ~ ~ acacia_button run return run setblock ~ ~ ~ acacia_button[face=$(face),facing=$(facing),powered=$(powered)]
 $execute if block ~ ~ ~ bamboo_button run return run setblock ~ ~ ~ bamboo_button[face=$(face),facing=$(facing),powered=$(powered)]

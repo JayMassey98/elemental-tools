@@ -1,7 +1,7 @@
 ## Update the target block with a matching method, then perform the resulting actions.
 
-# Set Block State
-$function elemental_tools:$(tool)/set_block_state
+# Invoke Block State Setup
+$function elemental_tools:generic/invoke_block_state_setup {tool:"$(tool)"}
 
 # Invoke Effects
 $function elemental_tools:$(tool)/invoke_effects

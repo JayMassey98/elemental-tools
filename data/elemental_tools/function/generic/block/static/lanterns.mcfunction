@@ -1,8 +1,5 @@
 ## Change blocks with specific static properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # Lanterns
 $execute if block ~ ~ ~ copper_lantern run return run setblock ~ ~ ~ copper_lantern[hanging=$(hanging),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ exposed_copper_lantern run return run setblock ~ ~ ~ exposed_copper_lantern[hanging=$(hanging),waterlogged=$(waterlogged)]

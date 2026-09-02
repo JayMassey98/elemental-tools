@@ -1,13 +1,22 @@
 ## Plumb blocks with specific connection (N+E+S+W+U+D) properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
+# N+E+S+W+U+D - Resin Clump
+$execute if block ~ ~ ~ resin_clump run return run function elemental_tools:generic/block/connection/resin_clump {down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ resin_clump run return run function elemental_tools:generic/block/connection/resin_clump {down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ resin_clump run return run function elemental_tools:generic/block/connection/resin_clump {down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ resin_clump run return run function elemental_tools:generic/block/connection/resin_clump {down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+
+# N+E+S+W+U+D - Sculk Vein
+$execute if block ~ ~ ~ sculk_vein run return run function elemental_tools:generic/block/connection/sculk_vein {down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ sculk_vein run return run function elemental_tools:generic/block/connection/sculk_vein {down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ sculk_vein run return run function elemental_tools:generic/block/connection/sculk_vein {down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ sculk_vein run return run function elemental_tools:generic/block/connection/sculk_vein {down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}
 
 # N+E+S+W - Bars
-$execute if block ~ ~ ~ #minecraft:bars run return run function elemental_tools:generic/block/connection/bars {states:2,east:"$(east)",north:"$(north)",south:"$(south)",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ #minecraft:bars run return run function elemental_tools:generic/block/connection/bars {east:"$(east)",north:"$(north)",south:"$(south)",waterlogged:"$(waterlogged_next)",west:"$(west)"}
 
 # N+E+S+W - Fences
-$execute if block ~ ~ ~ #minecraft:fences run return run function elemental_tools:generic/block/connection/fences {states:2,east:"$(east)",north:"$(north)",south:"$(south)",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ #minecraft:fences run return run function elemental_tools:generic/block/connection/fences {east:"$(east)",north:"$(north)",south:"$(south)",waterlogged:"$(waterlogged_next)",west:"$(west)"}
 
 # N+E+S+W - Glass Panes
 $execute if block ~ ~ ~ black_stained_glass_pane run return run setblock ~ ~ ~ black_stained_glass_pane[east=$(east),north=$(north),south=$(south),west=$(west),waterlogged=$(waterlogged_next)]
@@ -27,15 +36,3 @@ $execute if block ~ ~ ~ purple_stained_glass_pane run return run setblock ~ ~ ~ 
 $execute if block ~ ~ ~ red_stained_glass_pane run return run setblock ~ ~ ~ red_stained_glass_pane[east=$(east),north=$(north),south=$(south),west=$(west),waterlogged=$(waterlogged_next)]
 $execute if block ~ ~ ~ white_stained_glass_pane run return run setblock ~ ~ ~ white_stained_glass_pane[east=$(east),north=$(north),south=$(south),west=$(west),waterlogged=$(waterlogged_next)]
 $execute if block ~ ~ ~ yellow_stained_glass_pane run return run setblock ~ ~ ~ yellow_stained_glass_pane[east=$(east),north=$(north),south=$(south),west=$(west),waterlogged=$(waterlogged_next)]
-
-# N+E+S+W+U+D - Resin Clump
-$execute if block ~ ~ ~ resin_clump run return run function elemental_tools:generic/block/connection/resin_clump {states:2,down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
-$execute if block ~ ~ ~ resin_clump run return run function elemental_tools:generic/block/connection/resin_clump {states:2,down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}
-$execute if block ~ ~ ~ resin_clump run return run function elemental_tools:generic/block/connection/resin_clump {states:2,down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
-$execute if block ~ ~ ~ resin_clump run return run function elemental_tools:generic/block/connection/resin_clump {states:2,down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}
-
-# N+E+S+W+U+D - Sculk Vein
-$execute if block ~ ~ ~ sculk_vein run return run function elemental_tools:generic/block/connection/sculk_vein {states:2,down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
-$execute if block ~ ~ ~ sculk_vein run return run function elemental_tools:generic/block/connection/sculk_vein {states:2,down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}
-$execute if block ~ ~ ~ sculk_vein run return run function elemental_tools:generic/block/connection/sculk_vein {states:2,down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
-$execute if block ~ ~ ~ sculk_vein run return run function elemental_tools:generic/block/connection/sculk_vein {states:2,down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}

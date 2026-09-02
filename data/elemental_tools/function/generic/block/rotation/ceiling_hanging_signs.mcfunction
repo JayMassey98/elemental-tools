@@ -1,8 +1,5 @@
 ## Change blocks with specific rotation (0-15) properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # 0-15 - Ceiling Hanging Signs
 $execute if block ~ ~ ~ acacia_hanging_sign run return run setblock ~ ~ ~ acacia_hanging_sign[attached=$(attached),rotation=$(rotation),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ bamboo_hanging_sign run return run setblock ~ ~ ~ bamboo_hanging_sign[attached=$(attached),rotation=$(rotation),waterlogged=$(waterlogged)]
