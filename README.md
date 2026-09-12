@@ -5,13 +5,13 @@ This Minecraft data pack adds debug stick functionality as elemental tools that 
 
 ## Features
 
-There are 4 basic elemental tools, one for each element in the (hidden) elemental paintings:
-* **[TODO]** Earthweller - Alter blocks *(set cracked, mossy, etc.)*
-* **[TODO]** Firebinder - Meld blocks *(transform between states)*
+There are 4 basic elemental tools, one for each element in the elemental paintings:
+* Earthshaper - Alter blocks *(chiseled, cracked, etc.)*
+* **[TODO]** Firesolder - Meld blocks *(transform between states)*
 * Waterscooper - Plumb blocks *(add or subtract water)*
 * Windspanner - Rotate blocks *(turn blocks clockwise)*
 
-There is an additional elemental tool, created by combining all of the basic elemental tools:
+There is an additional elemental tool, created by combining all of the basic versions:
 * **[TODO]** Elementool - Cycle between each basic elemental tool
 
 
@@ -35,6 +35,9 @@ It can be found [here](https://modrinth.com/resourcepack/elemental-tools-resourc
 
 ### What happens if I don't use the resource pack?
 This data pack still works, just without any custom textures.
+
+### How do I craft a Earthshaper?
+1 blaze rod and 1 flint.
 
 ### How do I craft a Waterscooper?
 1 breeze rod and 1 heart of the sea.
