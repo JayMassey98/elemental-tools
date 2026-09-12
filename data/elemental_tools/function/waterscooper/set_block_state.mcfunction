@@ -79,8 +79,7 @@ execute if block ~ ~ ~ #elemental_tools:triggers_waterscooper[waterlogged=true] 
 # Remaining
 execute if block ~ ~ ~ minecraft:lava run playsound minecraft:block.lava.extinguish block @a[distance=..16] ~ ~ ~ 0.5 1 1
 execute if block ~ ~ ~ minecraft:lava run return run setblock ~ ~ ~ obsidian
-execute if block ~ ~ ~ minecraft:water[level=0] run return run setblock ~ ~ ~ air
-execute if block ~ ~ ~ minecraft:water run return run setblock ~ ~ ~ water
+execute if block ~ ~ ~ minecraft:water run return run setblock ~ ~ ~ air
 execute if block ~ ~ ~ minecraft:sponge run return run setblock ~ ~ ~ wet_sponge
 execute if block ~ ~ ~ minecraft:wet_sponge run return run setblock ~ ~ ~ sponge
 execute if block ~ ~ ~ #minecraft:washed_away_by_fluids run return run setblock ~ ~ ~ water destroy
