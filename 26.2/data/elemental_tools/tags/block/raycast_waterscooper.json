@@ -1,0 +1,15 @@
+{
+  "values": [
+    "#minecraft:air",
+    "#minecraft:banners",
+    "#minecraft:beds",
+    "#minecraft:candle_cakes",
+    "#minecraft:doors",
+    "#minecraft:pressure_plates",
+    "minecraft:bamboo",
+    "minecraft:brewing_stand",
+    "minecraft:cake",
+    "minecraft:daylight_detector",
+    "minecraft:structure_void"
+  ]
+}

@@ -158,6 +158,7 @@ $execute if block ~ ~ ~ jungle_fence_gate run return run setblock ~ ~ ~ jungle_f
 $execute if block ~ ~ ~ mangrove_fence_gate run return run setblock ~ ~ ~ mangrove_fence_gate[facing=$(facing_nesw_next)]
 $execute if block ~ ~ ~ oak_fence_gate run return run setblock ~ ~ ~ oak_fence_gate[facing=$(facing_nesw_next)]
 $execute if block ~ ~ ~ pale_oak_fence_gate run return run setblock ~ ~ ~ pale_oak_fence_gate[facing=$(facing_nesw_next)]
+$execute if block ~ ~ ~ poplar_fence_gate run return run setblock ~ ~ ~ poplar_fence_gate[facing=$(facing_nesw_next)]
 $execute if block ~ ~ ~ spruce_fence_gate run return run setblock ~ ~ ~ spruce_fence_gate[facing=$(facing_nesw_next)]
 $execute if block ~ ~ ~ warped_fence_gate run return run setblock ~ ~ ~ warped_fence_gate[facing=$(facing_nesw_next)]
 

@@ -14,5 +14,6 @@ $execute if block ~ ~ ~ jungle_shelf run return run setblock ~ ~ ~ jungle_shelf[
 $execute if block ~ ~ ~ mangrove_shelf run return run setblock ~ ~ ~ mangrove_shelf[facing=$(facing),powered=$(powered),side_chain=$(side_chain),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ oak_shelf run return run setblock ~ ~ ~ oak_shelf[facing=$(facing),powered=$(powered),side_chain=$(side_chain),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ pale_oak_shelf run return run setblock ~ ~ ~ pale_oak_shelf[facing=$(facing),powered=$(powered),side_chain=$(side_chain),waterlogged=$(waterlogged)]
+$execute if block ~ ~ ~ poplar_shelf run return run setblock ~ ~ ~ poplar_shelf[facing=$(facing),powered=$(powered),side_chain=$(side_chain),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ spruce_shelf run return run setblock ~ ~ ~ spruce_shelf[facing=$(facing),powered=$(powered),side_chain=$(side_chain),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ warped_shelf run return run setblock ~ ~ ~ warped_shelf[facing=$(facing),powered=$(powered),side_chain=$(side_chain),waterlogged=$(waterlogged)]

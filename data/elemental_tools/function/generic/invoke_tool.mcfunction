@@ -24,8 +24,6 @@ execute if score @s elemental_tools_item_hand matches -1 store result score @s e
 # Set New Durability
 scoreboard players add @s elemental_tools_item_damage 1
 execute store result storage elemental_tools damage int 1 run scoreboard players get @s elemental_tools_item_damage
-#execute with storage elemental_tools as @s if score @s elemental_tools_item_hand matches 1 run item modify entity @s weapon.mainhand {"function":"minecraft:set_components","components":{"minecraft:damage":$(damage)}}
-#execute with storage elemental_tools as @s if score @s elemental_tools_item_hand matches -1 run item modify entity @s weapon.offhand {"function":"minecraft:set_components","components":{"minecraft:damage":$(damage)}}
 function elemental_tools:generic/set_item_damage with storage elemental_tools
 
 # Determine Item Break

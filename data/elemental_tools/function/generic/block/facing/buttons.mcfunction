@@ -15,6 +15,7 @@ $execute if block ~ ~ ~ mangrove_button run return run setblock ~ ~ ~ mangrove_b
 $execute if block ~ ~ ~ oak_button run return run setblock ~ ~ ~ oak_button[face=$(face),facing=$(facing),powered=$(powered)]
 $execute if block ~ ~ ~ pale_oak_button run return run setblock ~ ~ ~ pale_oak_button[face=$(face),facing=$(facing),powered=$(powered)]
 $execute if block ~ ~ ~ polished_blackstone_button run return run setblock ~ ~ ~ polished_blackstone_button[face=$(face),facing=$(facing),powered=$(powered)]
+$execute if block ~ ~ ~ poplar_button run return run setblock ~ ~ ~ poplar_button[face=$(face),facing=$(facing),powered=$(powered)]
 $execute if block ~ ~ ~ spruce_button run return run setblock ~ ~ ~ spruce_button[face=$(face),facing=$(facing),powered=$(powered)]
 $execute if block ~ ~ ~ stone_button run return run setblock ~ ~ ~ stone_button[face=$(face),facing=$(facing),powered=$(powered)]
 $execute if block ~ ~ ~ warped_button run return run setblock ~ ~ ~ warped_button[face=$(face),facing=$(facing),powered=$(powered)]

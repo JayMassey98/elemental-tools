@@ -15,5 +15,6 @@ $execute if block ~ ~ ~ mangrove_fence run return run setblock ~ ~ ~ mangrove_fe
 $execute if block ~ ~ ~ nether_brick_fence run return run setblock ~ ~ ~ nether_brick_fence[east=$(east),north=$(north),south=$(south),waterlogged=$(waterlogged),west=$(west)]
 $execute if block ~ ~ ~ oak_fence run return run setblock ~ ~ ~ oak_fence[east=$(east),north=$(north),south=$(south),waterlogged=$(waterlogged),west=$(west)]
 $execute if block ~ ~ ~ pale_oak_fence run return run setblock ~ ~ ~ pale_oak_fence[east=$(east),north=$(north),south=$(south),waterlogged=$(waterlogged),west=$(west)]
+$execute if block ~ ~ ~ poplar_fence run return run setblock ~ ~ ~ poplar_fence[east=$(east),north=$(north),south=$(south),waterlogged=$(waterlogged),west=$(west)]
 $execute if block ~ ~ ~ spruce_fence run return run setblock ~ ~ ~ spruce_fence[east=$(east),north=$(north),south=$(south),waterlogged=$(waterlogged),west=$(west)]
 $execute if block ~ ~ ~ warped_fence run return run setblock ~ ~ ~ warped_fence[east=$(east),north=$(north),south=$(south),waterlogged=$(waterlogged),west=$(west)]

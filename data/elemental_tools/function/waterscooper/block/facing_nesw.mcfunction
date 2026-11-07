@@ -87,6 +87,7 @@ $execute if block ~ ~ ~ jungle_wall_sign run return run setblock ~ ~ ~ jungle_wa
 $execute if block ~ ~ ~ mangrove_wall_sign run return run setblock ~ ~ ~ mangrove_wall_sign[facing=$(facing),waterlogged=$(waterlogged_next)]
 $execute if block ~ ~ ~ oak_wall_sign run return run setblock ~ ~ ~ oak_wall_sign[facing=$(facing),waterlogged=$(waterlogged_next)]
 $execute if block ~ ~ ~ pale_oak_wall_sign run return run setblock ~ ~ ~ pale_oak_wall_sign[facing=$(facing),waterlogged=$(waterlogged_next)]
+$execute if block ~ ~ ~ poplar_wall_sign run return run setblock ~ ~ ~ poplar_wall_sign[facing=$(facing),waterlogged=$(waterlogged_next)]
 $execute if block ~ ~ ~ spruce_wall_sign run return run setblock ~ ~ ~ spruce_wall_sign[facing=$(facing),waterlogged=$(waterlogged_next)]
 $execute if block ~ ~ ~ warped_wall_sign run return run setblock ~ ~ ~ warped_wall_sign[facing=$(facing),waterlogged=$(waterlogged_next)]
 
@@ -101,6 +102,7 @@ $execute if block ~ ~ ~ jungle_wall_hanging_sign run return run setblock ~ ~ ~ j
 $execute if block ~ ~ ~ mangrove_wall_hanging_sign run return run setblock ~ ~ ~ mangrove_wall_hanging_sign[facing=$(facing),waterlogged=$(waterlogged_next)]
 $execute if block ~ ~ ~ oak_wall_hanging_sign run return run setblock ~ ~ ~ oak_wall_hanging_sign[facing=$(facing),waterlogged=$(waterlogged_next)]
 $execute if block ~ ~ ~ pale_oak_wall_hanging_sign run return run setblock ~ ~ ~ pale_oak_wall_hanging_sign[facing=$(facing),waterlogged=$(waterlogged_next)]
+$execute if block ~ ~ ~ poplar_wall_hanging_sign run return run setblock ~ ~ ~ poplar_wall_hanging_sign[facing=$(facing),waterlogged=$(waterlogged_next)]
 $execute if block ~ ~ ~ spruce_wall_hanging_sign run return run setblock ~ ~ ~ spruce_wall_hanging_sign[facing=$(facing),waterlogged=$(waterlogged_next)]
 $execute if block ~ ~ ~ warped_wall_hanging_sign run return run setblock ~ ~ ~ warped_wall_hanging_sign[facing=$(facing),waterlogged=$(waterlogged_next)]
 

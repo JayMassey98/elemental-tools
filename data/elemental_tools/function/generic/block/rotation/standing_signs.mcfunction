@@ -14,5 +14,6 @@ $execute if block ~ ~ ~ jungle_sign run return run setblock ~ ~ ~ jungle_sign[ro
 $execute if block ~ ~ ~ mangrove_sign run return run setblock ~ ~ ~ mangrove_sign[rotation=$(rotation),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ oak_sign run return run setblock ~ ~ ~ oak_sign[rotation=$(rotation),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ pale_oak_sign run return run setblock ~ ~ ~ pale_oak_sign[rotation=$(rotation),waterlogged=$(waterlogged)]
+$execute if block ~ ~ ~ poplar_sign run return run setblock ~ ~ ~ poplar_sign[rotation=$(rotation),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ spruce_sign run return run setblock ~ ~ ~ spruce_sign[rotation=$(rotation),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ warped_sign run return run setblock ~ ~ ~ warped_sign[rotation=$(rotation),waterlogged=$(waterlogged)]

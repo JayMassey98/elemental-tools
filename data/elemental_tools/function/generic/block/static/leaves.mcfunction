@@ -13,5 +13,8 @@ $execute if block ~ ~ ~ flowering_azalea_leaves run return run setblock ~ ~ ~ fl
 $execute if block ~ ~ ~ jungle_leaves run return run setblock ~ ~ ~ jungle_leaves[distance=$(distance),persistent=$(persistent),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ mangrove_leaves run return run setblock ~ ~ ~ mangrove_leaves[distance=$(distance),persistent=$(persistent),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ oak_leaves run return run setblock ~ ~ ~ oak_leaves[distance=$(distance),persistent=$(persistent),waterlogged=$(waterlogged)]
+$execute if block ~ ~ ~ orange_poplar_leaves run return run setblock ~ ~ ~ orange_poplar_leaves[distance=$(distance),persistent=$(persistent),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ pale_oak_leaves run return run setblock ~ ~ ~ pale_oak_leaves[distance=$(distance),persistent=$(persistent),waterlogged=$(waterlogged)]
+$execute if block ~ ~ ~ red_poplar_leaves run return run setblock ~ ~ ~ red_poplar_leaves[distance=$(distance),persistent=$(persistent),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ spruce_leaves run return run setblock ~ ~ ~ spruce_leaves[distance=$(distance),persistent=$(persistent),waterlogged=$(waterlogged)]
+$execute if block ~ ~ ~ yellow_poplar_leaves run return run setblock ~ ~ ~ yellow_poplar_leaves[distance=$(distance),persistent=$(persistent),waterlogged=$(waterlogged)]

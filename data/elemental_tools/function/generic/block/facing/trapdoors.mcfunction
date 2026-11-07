@@ -18,6 +18,7 @@ $execute if block ~ ~ ~ mangrove_trapdoor run return run setblock ~ ~ ~ mangrove
 $execute if block ~ ~ ~ oak_trapdoor run return run setblock ~ ~ ~ oak_trapdoor[facing=$(facing),half=$(half),open=$(open),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ oxidized_copper_trapdoor run return run setblock ~ ~ ~ oxidized_copper_trapdoor[facing=$(facing),half=$(half),open=$(open),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ pale_oak_trapdoor run return run setblock ~ ~ ~ pale_oak_trapdoor[facing=$(facing),half=$(half),open=$(open),waterlogged=$(waterlogged)]
+$execute if block ~ ~ ~ poplar_trapdoor run return run setblock ~ ~ ~ poplar_trapdoor[facing=$(facing),half=$(half),open=$(open),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ spruce_trapdoor run return run setblock ~ ~ ~ spruce_trapdoor[facing=$(facing),half=$(half),open=$(open),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ warped_trapdoor run return run setblock ~ ~ ~ warped_trapdoor[facing=$(facing),half=$(half),open=$(open),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ waxed_copper_trapdoor run return run setblock ~ ~ ~ waxed_copper_trapdoor[facing=$(facing),half=$(half),open=$(open),waterlogged=$(waterlogged)]

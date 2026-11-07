@@ -14,5 +14,6 @@ $execute if block ~ ~ ~ jungle_hanging_sign run return run setblock ~ ~ ~ jungle
 $execute if block ~ ~ ~ mangrove_hanging_sign run return run setblock ~ ~ ~ mangrove_hanging_sign[attached=$(attached),rotation=$(rotation),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ oak_hanging_sign run return run setblock ~ ~ ~ oak_hanging_sign[attached=$(attached),rotation=$(rotation),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ pale_oak_hanging_sign run return run setblock ~ ~ ~ pale_oak_hanging_sign[attached=$(attached),rotation=$(rotation),waterlogged=$(waterlogged)]
+$execute if block ~ ~ ~ poplar_hanging_sign run return run setblock ~ ~ ~ poplar_hanging_sign[attached=$(attached),rotation=$(rotation),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ spruce_hanging_sign run return run setblock ~ ~ ~ spruce_hanging_sign[attached=$(attached),rotation=$(rotation),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ warped_hanging_sign run return run setblock ~ ~ ~ warped_hanging_sign[attached=$(attached),rotation=$(rotation),waterlogged=$(waterlogged)]
