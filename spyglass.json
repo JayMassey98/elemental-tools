@@ -1,0 +1,8 @@
+{
+  "env": {
+    "dependencies": [
+      "@vanilla-datapack",
+      "@vanilla-mcdoc"
+    ]
+  }
+}

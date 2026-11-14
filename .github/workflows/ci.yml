@@ -1,13 +1,14 @@
 name: CI
 
 on:
+
+  # TODO: Change this to main once the automated testing branch is merged.
   push:
     branches: [automated_testing]
-  pull_request:
+
+  # Tuesday 19:00 UTC.
   schedule:
-    # Tuesday 19:00 UTC.
     - cron: "0 19 * * 2"
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -18,7 +19,7 @@ concurrency:
 
 jobs:
 
-  
+  # TODO - Add a comment here.
   get-minecraft-versions:
     name: Discover Minecraft versions
     runs-on: ubuntu-latest
@@ -27,18 +28,67 @@ jobs:
       matrix: ${{ steps.discover.outputs.matrix }}
       count: ${{ steps.discover.outputs.count }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Query Mojang's version manifest
         id: discover
         run: python3 .github/scripts/get_minecraft_versions.py --release-from 1.21.9 --snapshot-after 26.3
 
-  # Temporary smoke test proving the dynamic matrix works.
-  matrix-smoke-test:
-    name: Matrix check (${{ matrix.id }})
+  # Lint the pack with Spyglass against every target version.
+  # Snapshot failures are reported but never turn the workflow red; releases do.
+  lint:
+
+    name: Lint (${{ matrix.id }})
     needs: get-minecraft-versions
     runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.kind == 'snapshot' }}
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.get-minecraft-versions.outputs.matrix) }}
+
     steps:
-      - run: echo "${{ matrix.id }} (${{ matrix.kind }}) needs Java ${{ matrix.java }}"
+
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: .github/scripts/spyglass/package-lock.json
+
+      - name: Install Spyglass
+        working-directory: .github/scripts/spyglass
+        run: npm ci --no-audit --no-fund
+
+      # Server jars never change once published, so cache them by SHA-1.
+      - uses: actions/cache@v6
+        with:
+          path: .mc-cache
+          key: server-jar-${{ matrix.sha1 }}
+
+      # Spyglass ignores pack.mcmeta overlays, so build the pack as Minecraft
+      # would load it for this version: root data/ plus the overlays that apply.
+      # The data pack format is read from version.json inside the server jar.
+      - name: Build the pack for ${{ matrix.id }}
+        run: >
+          python3 .github/scripts/build_version_pack.py
+          --server-url "${{ matrix.server_url }}"
+          --sha1 "${{ matrix.sha1 }}"
+          --cache-dir .mc-cache
+          --out build/pack
+          --source-map build/source-map.json
+
+      # Spyglass revalidates cached downloads with ETags, so a stale cache is safe.
+      - uses: actions/cache@v6
+        with:
+          path: .spyglass-cache
+          key: spyglass-data-${{ matrix.id }}-${{ github.run_id }}
+          restore-keys: spyglass-data-${{ matrix.id }}-
+
+      - name: Spyglass lint
+        run: >
+          node .github/scripts/spyglass/lint.mjs
+          --root build/pack
+          --game-version "${{ matrix.id }}"
+          --source-map build/source-map.json
+          --cache-dir .spyglass-cache
+          ${{ matrix.kind == 'snapshot' && '--allow-unsupported' || '' }}
