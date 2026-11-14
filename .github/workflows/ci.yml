@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [automated_testing]
+  pull_request:
+  schedule:
+    # Tuesday 19:00 UTC.
+    - cron: "0 19 * * 2"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  
+  get-minecraft-versions:
+    name: Discover Minecraft versions
+    runs-on: ubuntu-latest
+    outputs:
+      versions: ${{ steps.discover.outputs.versions }}
+      matrix: ${{ steps.discover.outputs.matrix }}
+      count: ${{ steps.discover.outputs.count }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Query Mojang's version manifest
+        id: discover
+        run: python3 .github/scripts/get_minecraft_versions.py --release-from 1.21.9 --snapshot-after 26.3
+
+  # Temporary smoke test proving the dynamic matrix works.
+  matrix-smoke-test:
+    name: Matrix check (${{ matrix.id }})
+    needs: get-minecraft-versions
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.get-minecraft-versions.outputs.matrix) }}
+    steps:
+      - run: echo "${{ matrix.id }} (${{ matrix.kind }}) needs Java ${{ matrix.java }}"
