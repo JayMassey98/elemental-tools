@@ -1,8 +1,5 @@
 ## Change blocks with specific facing (N/E/S/W/U/D) properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # N/E/S/W/U/D - Lightning Rods
 $execute if block ~ ~ ~ exposed_lightning_rod run return run setblock ~ ~ ~ exposed_lightning_rod[facing=$(facing),powered=$(powered),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ lightning_rod run return run setblock ~ ~ ~ lightning_rod[facing=$(facing),powered=$(powered),waterlogged=$(waterlogged)]

@@ -1,8 +1,5 @@
 ## Change blocks with specific static properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # Candles
 $execute if block ~ ~ ~ black_candle run return run setblock ~ ~ ~ black_candle[candles=$(candles),lit=$(lit),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ blue_candle run return run setblock ~ ~ ~ blue_candle[candles=$(candles),lit=$(lit),waterlogged=$(waterlogged)]

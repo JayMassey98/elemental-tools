@@ -1,8 +1,5 @@
 ## Change blocks with specific type (T/B) properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # T/B - Slabs
 $execute if block ~ ~ ~ acacia_slab run return run setblock ~ ~ ~ acacia_slab[type=$(type),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ andesite_slab run return run setblock ~ ~ ~ andesite_slab[type=$(type),waterlogged=$(waterlogged)]
@@ -65,4 +62,4 @@ $execute if block ~ ~ ~ waxed_cut_copper_slab run return run setblock ~ ~ ~ waxe
 $execute if block ~ ~ ~ waxed_exposed_cut_copper_slab run return run setblock ~ ~ ~ waxed_exposed_cut_copper_slab[type=$(type),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ waxed_oxidized_cut_copper_slab run return run setblock ~ ~ ~ waxed_oxidized_cut_copper_slab[type=$(type),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ waxed_weathered_cut_copper_slab run return run setblock ~ ~ ~ waxed_weathered_cut_copper_slab[type=$(type),waterlogged=$(waterlogged)]
-$execute if block ~ ~ ~ weathered_cut_copper_slab run return run setblock ~ ~ ~ waxed_weathered_cut_copper_slab[type=$(type),waterlogged=$(waterlogged)]
+$execute if block ~ ~ ~ weathered_cut_copper_slab run return run setblock ~ ~ ~ weathered_cut_copper_slab[type=$(type),waterlogged=$(waterlogged)]

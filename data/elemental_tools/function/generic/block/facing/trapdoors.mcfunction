@@ -1,8 +1,5 @@
 ## Change blocks with specific facing (N/E/S/W/U/D) properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # N/E/S/W - Trapdoors
 $execute if block ~ ~ ~ acacia_trapdoor run return run setblock ~ ~ ~ acacia_trapdoor[facing=$(facing),half=$(half),open=$(open),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ bamboo_trapdoor run return run setblock ~ ~ ~ bamboo_trapdoor[facing=$(facing),half=$(half),open=$(open),waterlogged=$(waterlogged)]

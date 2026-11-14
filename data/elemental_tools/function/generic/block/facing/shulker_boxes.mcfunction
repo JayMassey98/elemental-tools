@@ -1,8 +1,5 @@
 ## Change blocks with specific facing (N/E/S/W/U/D) properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # N/E/S/W/U/D - Shulker Boxes
 $execute if block ~ ~ ~ black_shulker_box run return run setblock ~ ~ ~ black_shulker_box[facing=$(facing)]
 $execute if block ~ ~ ~ blue_shulker_box run return run setblock ~ ~ ~ blue_shulker_box[facing=$(facing)]

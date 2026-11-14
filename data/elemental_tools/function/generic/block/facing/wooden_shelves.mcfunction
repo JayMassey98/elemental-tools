@@ -1,8 +1,5 @@
 ## Change blocks with specific facing (N/E/S/W/U/D) properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # N/E/S/W - Wooden Shelves
 $execute if block ~ ~ ~ acacia_shelf run return run setblock ~ ~ ~ acacia_shelf[facing=$(facing),powered=$(powered),side_chain=$(side_chain),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ bamboo_shelf run return run setblock ~ ~ ~ bamboo_shelf[facing=$(facing),powered=$(powered),side_chain=$(side_chain),waterlogged=$(waterlogged)]

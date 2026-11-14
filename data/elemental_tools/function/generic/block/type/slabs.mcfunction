@@ -1,8 +1,5 @@
 ## Change blocks with specific type (T/B) properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # T/B - Slabs
 $execute if block ~ ~ ~ acacia_slab run return run setblock ~ ~ ~ acacia_slab[type=$(type),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ andesite_slab run return run setblock ~ ~ ~ andesite_slab[type=$(type),waterlogged=$(waterlogged)]

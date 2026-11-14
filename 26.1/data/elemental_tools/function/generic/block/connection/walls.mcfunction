@@ -1,8 +1,5 @@
 ## Change blocks with specific connection (N+E+S+W+U+D) properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # N+E+S+W+U - Walls
 $execute if block ~ ~ ~ andesite_wall run return run setblock ~ ~ ~ andesite_wall[east=$(east),north=$(north),south=$(south),up=$(up),waterlogged=$(waterlogged),west=$(west)]
 $execute if block ~ ~ ~ blackstone_wall run return run setblock ~ ~ ~ blackstone_wall[east=$(east),north=$(north),south=$(south),up=$(up),waterlogged=$(waterlogged),west=$(west)]

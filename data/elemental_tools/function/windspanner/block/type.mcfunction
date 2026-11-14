@@ -4,4 +4,4 @@
 $scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
 
 # T/B - Slabs
-$execute if block ~ ~ ~ #minecraft:slabs run return run function elemental_tools:generic/block/type/slabs {states:2,type:"$(type_next)",waterlogged:"$(waterlogged)"}
+$execute if block ~ ~ ~ #minecraft:slabs run return run function elemental_tools:generic/block/type/slabs {type:"$(type_next)",waterlogged:"$(waterlogged)"}

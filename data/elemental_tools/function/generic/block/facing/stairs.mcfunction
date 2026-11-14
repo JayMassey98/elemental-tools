@@ -1,8 +1,5 @@
 ## Change blocks with specific facing (N/E/S/W/U/D) properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # N/E/S/W - Stairs
 $execute if block ~ ~ ~ acacia_stairs run return run setblock ~ ~ ~ acacia_stairs[facing=$(facing),half=$(half),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ andesite_stairs run return run setblock ~ ~ ~ andesite_stairs[facing=$(facing),half=$(half),waterlogged=$(waterlogged)]
@@ -100,4 +97,4 @@ $execute if block ~ ~ ~ weathered_cut_copper_stairs run return run setblock ~ ~ 
 $execute if block ~ ~ ~ white_concrete_stairs run return run setblock ~ ~ ~ white_concrete_stairs[facing=$(facing),half=$(half),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ white_wool_stairs run return run setblock ~ ~ ~ white_wool_stairs[facing=$(facing),half=$(half),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ yellow_concrete_stairs run return run setblock ~ ~ ~ yellow_concrete_stairs[facing=$(facing),half=$(half),waterlogged=$(waterlogged)]
-$execute if block ~ ~ ~ yellow_wool_stairs run return run setblock ^ ^ ^ yellow_wool_stairs[facing=$(facing),half=$(half),waterlogged=$(waterlogged)]
+$execute if block ~ ~ ~ yellow_wool_stairs run return run setblock ~ ~ ~ yellow_wool_stairs[facing=$(facing),half=$(half),waterlogged=$(waterlogged)]

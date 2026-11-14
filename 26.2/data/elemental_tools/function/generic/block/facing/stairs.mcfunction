@@ -67,4 +67,4 @@ $execute if block ~ ~ ~ waxed_cut_copper_stairs run return run setblock ~ ~ ~ wa
 $execute if block ~ ~ ~ waxed_exposed_cut_copper_stairs run return run setblock ~ ~ ~ waxed_exposed_cut_copper_stairs[facing=$(facing),half=$(half),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ waxed_oxidized_cut_copper_stairs run return run setblock ~ ~ ~ waxed_oxidized_cut_copper_stairs[facing=$(facing),half=$(half),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ waxed_weathered_cut_copper_stairs run return run setblock ~ ~ ~ waxed_weathered_cut_copper_stairs[facing=$(facing),half=$(half),waterlogged=$(waterlogged)]
-$execute if block ~ ~ ~ weathered_cut_copper_stairs run return run setblock ~ ~ ~ waxed_weathered_cut_copper_stairs[facing=$(facing),half=$(half),waterlogged=$(waterlogged)]
+$execute if block ~ ~ ~ weathered_cut_copper_stairs run return run setblock ~ ~ ~ weathered_cut_copper_stairs[facing=$(facing),half=$(half),waterlogged=$(waterlogged)]

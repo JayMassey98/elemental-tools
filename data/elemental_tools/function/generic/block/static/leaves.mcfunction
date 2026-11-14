@@ -1,8 +1,5 @@
 ## Change blocks with specific static properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # Leaves
 $execute if block ~ ~ ~ acacia_leaves run return run setblock ~ ~ ~ acacia_leaves[distance=$(distance),persistent=$(persistent),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ azalea_leaves run return run setblock ~ ~ ~ azalea_leaves[distance=$(distance),persistent=$(persistent),waterlogged=$(waterlogged)]
