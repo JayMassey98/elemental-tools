@@ -6,30 +6,11 @@
         "color": "gold"
       },
       {
-        "text": "Automated GameTests",
+        "text": "Automated Tests",
         "color": "yellow"
       }
     ],
     "min_format": 88,
     "max_format": [ 121, 0 ]
-  },
-  "overlays": {
-    "entries": [
-      {
-        "directory": "26.2",
-        "min_format": 88,
-        "max_format": [ 107, 1 ]
-      },
-      {
-        "directory": "26.1.2",
-        "min_format": 88,
-        "max_format": [ 101, 1 ]
-      },
-      {
-        "directory": "1.21.11",
-        "min_format": 88,
-        "max_format": [ 94, 1 ]
-      }
-    ]
   }
 }

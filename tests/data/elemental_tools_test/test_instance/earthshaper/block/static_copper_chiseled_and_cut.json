@@ -1,8 +1,0 @@
-﻿{
-  "type": "minecraft:function",
-  "environment": "elemental_tools_test:default",
-  "structure": "elemental_tools_test:empty_3x3x3",
-  "max_ticks": 20,
-  "setup_ticks": 1,
-  "function": "elemental_tools_test:earthshaper/block/static_copper_chiseled_and_cut"
-}

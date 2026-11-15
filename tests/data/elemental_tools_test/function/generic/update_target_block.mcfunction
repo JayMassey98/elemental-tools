@@ -1,6 +1,25 @@
 ## Unit test for elemental_tools:generic/update_target_block.mcfunction.
 
-summon minecraft:armor_stand ~1 ~1 ~1 {Tags:["et_test_holder"]}
-execute as @e[tag=et_test_holder,limit=1] at @s run function elemental_tools:generic/update_target_block {tool:"windspanner"}
-kill @e[tag=et_test_holder]
-test pass
+# Full tool use on a block, as a player would trigger it (minus the raycast).
+
+# Earthshaper: dirt -> coarse dirt
+setblock ~ ~ ~ minecraft:dirt
+function elemental_tools_test:harness/use_tool {tool:"earthshaper"}
+function elemental_tools_test:assert/block {block:"minecraft:coarse_dirt"}
+
+# Windspanner: standing sign rotation 0 -> 1
+setblock ~ ~ ~ minecraft:oak_sign[rotation=0,waterlogged=false]
+function elemental_tools_test:harness/use_tool {tool:"windspanner"}
+function elemental_tools_test:assert/block {block:"minecraft:oak_sign[rotation=1,waterlogged=false]"}
+
+# Windspanner: log axis x -> y
+setblock ~ ~ ~ minecraft:oak_log[axis=x]
+function elemental_tools_test:harness/use_tool {tool:"windspanner"}
+function elemental_tools_test:assert/block {block:"minecraft:oak_log[axis=y]"}
+
+# Waterscooper: slab waterlogged false -> true -> false
+setblock ~ ~ ~ minecraft:oak_slab[type=bottom,waterlogged=false]
+function elemental_tools_test:harness/use_tool {tool:"waterscooper"}
+function elemental_tools_test:assert/block {block:"minecraft:oak_slab[type=bottom,waterlogged=true]"}
+function elemental_tools_test:harness/use_tool {tool:"waterscooper"}
+function elemental_tools_test:assert/block {block:"minecraft:oak_slab[type=bottom,waterlogged=false]"}

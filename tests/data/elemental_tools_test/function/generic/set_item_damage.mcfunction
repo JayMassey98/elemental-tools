@@ -1,9 +1,16 @@
 ## Unit test for elemental_tools:generic/set_item_damage.mcfunction.
 
-summon minecraft:armor_stand ~1 ~1 ~1 {Tags:["et_test_holder"]}
-item replace entity @e[tag=et_test_holder,limit=1] weapon.mainhand with minecraft:breeze_rod[minecraft:custom_data={windspanner:1b},minecraft:max_damage=256,minecraft:damage=0]
-scoreboard players set @e[tag=et_test_holder,limit=1] elemental_tools_item_hand 1
-execute as @e[tag=et_test_holder,limit=1] run function elemental_tools:generic/set_item_damage {damage:1}
-execute unless items entity @e[tag=et_test_holder,limit=1] weapon.mainhand *[minecraft:damage=1] run test fail "set_item_damage failed on weapon.mainhand"
-kill @e[tag=et_test_holder]
-test pass
+# The damage goes on the hand that is holding the tool: main hand when the hand score is positive, off hand when negative.
+summon minecraft:armor_stand ~0.5 ~ ~0.5 {Tags:["et_test_holder"],NoGravity:1b,Invisible:1b,Marker:1b,equipment:{mainhand:{id:"minecraft:iron_sword",count:1},offhand:{id:"minecraft:iron_sword",count:1}}}
+
+# Main hand
+scoreboard players set @e[tag=et_test_holder] elemental_tools_item_hand 1
+execute as @e[tag=et_test_holder,limit=1] at @s run function elemental_tools:generic/set_item_damage {damage:7}
+execute unless entity @e[tag=et_test_holder,nbt={equipment:{mainhand:{components:{"minecraft:damage":7}}}}] run function elemental_tools_test:harness/fail {message:"main hand damage was not set to 7"}
+execute if entity @e[tag=et_test_holder,nbt={equipment:{offhand:{components:{"minecraft:damage":7}}}}] run function elemental_tools_test:harness/fail {message:"off hand was damaged by a main hand update"}
+
+# Off hand
+scoreboard players set @e[tag=et_test_holder] elemental_tools_item_hand -1
+execute as @e[tag=et_test_holder,limit=1] at @s run function elemental_tools:generic/set_item_damage {damage:9}
+execute unless entity @e[tag=et_test_holder,nbt={equipment:{offhand:{components:{"minecraft:damage":9}}}}] run function elemental_tools_test:harness/fail {message:"off hand damage was not set to 9"}
+execute unless entity @e[tag=et_test_holder,nbt={equipment:{mainhand:{components:{"minecraft:damage":7}}}}] run function elemental_tools_test:harness/fail {message:"main hand damage changed during an off hand update"}

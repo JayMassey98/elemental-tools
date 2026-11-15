@@ -81,8 +81,26 @@ def stage_data_pack(repo: Path, destination: Path) -> None:
     widen_max_format(destination / "pack.mcmeta")
 
 
+# Files every tests pack must have. If they are missing, the tests folder was not fully updated.
+REQUIRED_TEST_FILES = (
+    "harness/start.mcfunction",
+    "harness/run.mcfunction",
+    "harness/fail.mcfunction",
+    "harness/end_test.mcfunction",
+    "assert/block.mcfunction",
+)
+# Left over from the earlier vanilla GameTest attempt. They are not used and would only add load errors.
+LEGACY_GAMETEST_FOLDERS = ("test_instance", "test_environment", "structure")
+
+
 def stage_tests_pack(tests: Path, destination: Path) -> int:
-    shutil.copytree(tests, destination)
+    function_dir = tests / "data" / "elemental_tools_test" / "function"
+    missing = [name for name in REQUIRED_TEST_FILES if not (function_dir / name).is_file()]
+    if missing:
+        raise SystemExit(
+            f"The tests folder is missing {', '.join(missing)}. "
+            f"Copy the whole tests/ folder from the test harness zip into the repo, then try again.")
+    shutil.copytree(tests, destination, ignore=shutil.ignore_patterns(*LEGACY_GAMETEST_FOLDERS))
     count = generate(destination)  # never run a stale test list
     widen_max_format(destination / "pack.mcmeta")
     return count

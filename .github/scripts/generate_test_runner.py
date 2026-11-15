@@ -53,6 +53,7 @@ def generate(pack_dir: Path) -> int:
     if not tests:
         raise SystemExit(f"No test functions found under {pack_dir}")
     target = pack_dir / "data" / NAMESPACE / "function" / "harness" / "run_tests.mcfunction"
+    target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(render(tests), encoding="utf-8", newline="\n")
     return len(tests)
 

@@ -1,6 +1,4 @@
 ## Unit test for elemental_tools:earthshaper/invoke_earthshaper.mcfunction.
 
-summon minecraft:armor_stand ~1 ~1 ~1 {Tags:["et_test_holder"]}
-execute as @e[tag=et_test_holder,limit=1] at @s run function elemental_tools:earthshaper/invoke_earthshaper
-kill @e[tag=et_test_holder]
-test pass
+# TODO: not written yet. Reported as skipped, never as passed.
+function elemental_tools_test:harness/todo
