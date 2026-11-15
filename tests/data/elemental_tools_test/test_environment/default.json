@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:all_of",
+  "definitions": [
+    {
+      "type": "minecraft:game_rules",
+      "rules": {
+        "minecraft:advance_time": false,
+        "minecraft:advance_weather": false,
+        "minecraft:spawn_mobs": false
+      }
+    },
+    {
+      "type": "minecraft:weather",
+      "weather": "clear"
+    }
+  ]
+}
