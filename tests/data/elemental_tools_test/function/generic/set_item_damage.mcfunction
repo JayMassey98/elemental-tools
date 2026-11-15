@@ -1,7 +1,7 @@
 ## Unit test for elemental_tools:generic/set_item_damage.mcfunction.
 
 # The damage goes on the hand that is holding the tool: main hand when the hand score is positive, off hand when negative.
-summon minecraft:armor_stand ~0.5 ~ ~0.5 {Tags:["et_test_holder"],NoGravity:1b,Invisible:1b,Marker:1b,equipment:{mainhand:{id:"minecraft:iron_sword",count:1},offhand:{id:"minecraft:iron_sword",count:1}}}
+summon minecraft:armor_stand ~ ~ ~ {Tags:["et_test_holder"],NoGravity:1b,Invisible:1b,Marker:1b,equipment:{mainhand:{id:"minecraft:iron_sword",count:1},offhand:{id:"minecraft:iron_sword",count:1}}}
 
 # Main hand
 scoreboard players set @e[tag=et_test_holder] elemental_tools_item_hand 1
