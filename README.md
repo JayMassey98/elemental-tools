@@ -53,3 +53,7 @@ Not yet, however a workaround to allow this is planned for the future.
 
 ### When will the other elemental tools be added?
 Soon™
+
+
+[![CI](https://github.com/JayMassey98/elemental-tools/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/JayMassey98/elemental-tools/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/JayMassey98/elemental-tools?include_prereleases)](https://github.com/JayMassey98/elemental-tools/releases/latest)

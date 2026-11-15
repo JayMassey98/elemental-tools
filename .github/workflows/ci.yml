@@ -6,6 +6,9 @@ on:
   push:
     branches: [automated_testing]
 
+  # Lets release.yml run these tests before publishing a release.
+  workflow_call:
+
   # Tuesday 19:00 UTC.
   # schedule:
     # - cron: "0 19 * * 2"
