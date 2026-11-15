@@ -1,16 +1,16 @@
 ## Plumb blocks with specific connection (N+E+S+W+U+D) properties that match the outlined criteria.
 
 # N+E+S+W+U+D - Resin Clump
-$execute if block ~ ~ ~ resin_clump run return run function elemental_tools:generic/block/connection/resin_clump {down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
-$execute if block ~ ~ ~ resin_clump run return run function elemental_tools:generic/block/connection/resin_clump {down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}
-$execute if block ~ ~ ~ resin_clump run return run function elemental_tools:generic/block/connection/resin_clump {down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
-$execute if block ~ ~ ~ resin_clump run return run function elemental_tools:generic/block/connection/resin_clump {down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ resin_clump[down=false,up=false] run return run function elemental_tools:generic/block/connection/resin_clump {down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ resin_clump[down=false,up=true] run return run function elemental_tools:generic/block/connection/resin_clump {down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ resin_clump[down=true,up=false] run return run function elemental_tools:generic/block/connection/resin_clump {down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ resin_clump[down=true,up=true] run return run function elemental_tools:generic/block/connection/resin_clump {down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}
 
 # N+E+S+W+U+D - Sculk Vein
-$execute if block ~ ~ ~ sculk_vein run return run function elemental_tools:generic/block/connection/sculk_vein {down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
-$execute if block ~ ~ ~ sculk_vein run return run function elemental_tools:generic/block/connection/sculk_vein {down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}
-$execute if block ~ ~ ~ sculk_vein run return run function elemental_tools:generic/block/connection/sculk_vein {down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
-$execute if block ~ ~ ~ sculk_vein run return run function elemental_tools:generic/block/connection/sculk_vein {down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ sculk_vein[down=false,up=false] run return run function elemental_tools:generic/block/connection/sculk_vein {down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ sculk_vein[down=false,up=true] run return run function elemental_tools:generic/block/connection/sculk_vein {down:"false",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ sculk_vein[down=true,up=false] run return run function elemental_tools:generic/block/connection/sculk_vein {down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"false",waterlogged:"$(waterlogged_next)",west:"$(west)"}
+$execute if block ~ ~ ~ sculk_vein[down=true,up=true] run return run function elemental_tools:generic/block/connection/sculk_vein {down:"true",east:"$(east)",north:"$(north)",south:"$(south)",up:"true",waterlogged:"$(waterlogged_next)",west:"$(west)"}
 
 # N+E+S+W - Bars
 $execute if block ~ ~ ~ #minecraft:bars run return run function elemental_tools:generic/block/connection/bars {east:"$(east)",north:"$(north)",south:"$(south)",waterlogged:"$(waterlogged_next)",west:"$(west)"}

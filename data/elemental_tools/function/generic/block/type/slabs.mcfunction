@@ -97,7 +97,7 @@ $execute if block ~ ~ ~ waxed_cut_copper_slab run return run setblock ~ ~ ~ waxe
 $execute if block ~ ~ ~ waxed_exposed_cut_copper_slab run return run setblock ~ ~ ~ waxed_exposed_cut_copper_slab[type=$(type),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ waxed_oxidized_cut_copper_slab run return run setblock ~ ~ ~ waxed_oxidized_cut_copper_slab[type=$(type),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ waxed_weathered_cut_copper_slab run return run setblock ~ ~ ~ waxed_weathered_cut_copper_slab[type=$(type),waterlogged=$(waterlogged)]
-$execute if block ~ ~ ~ weathered_cut_copper_slab run return run setblock ~ ~ ~ waxed_weathered_cut_copper_slab[type=$(type),waterlogged=$(waterlogged)]
+$execute if block ~ ~ ~ weathered_cut_copper_slab run return run setblock ~ ~ ~ weathered_cut_copper_slab[type=$(type),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ white_concrete_slab run return run setblock ~ ~ ~ white_concrete_slab[type=$(type),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ white_wool_slab run return run setblock ~ ~ ~ white_wool_slab[type=$(type),waterlogged=$(waterlogged)]
 $execute if block ~ ~ ~ yellow_concrete_slab run return run setblock ~ ~ ~ yellow_concrete_slab[type=$(type),waterlogged=$(waterlogged)]
