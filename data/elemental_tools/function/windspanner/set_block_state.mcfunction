@@ -6,6 +6,7 @@ $execute if block ~ ~ ~ #elemental_tools:triggers_windspanner[axis=y] run return
 $execute if block ~ ~ ~ #elemental_tools:triggers_windspanner[axis=z] run return run function elemental_tools:windspanner/block/axis {states:3,axis_next:"x",waterlogged:"$(waterlogged)"}
 
 # Facing (N/E/S/W) - Stairs
+execute if block ~ ~ ~ #minecraft:stairs run scoreboard players set @s elemental_tools_durability_chance_maximum 8
 $execute if block ~ ~ ~ #minecraft:stairs[facing=north,half=bottom] run return run function elemental_tools:generic/block/facing/stairs {states:8,facing:"north",half:"top",waterlogged:"$(waterlogged)"}
 $execute if block ~ ~ ~ #minecraft:stairs[facing=north,half=top] run return run function elemental_tools:generic/block/facing/stairs {states:8,facing:"east",half:"bottom",waterlogged:"$(waterlogged)"}
 $execute if block ~ ~ ~ #minecraft:stairs[facing=east,half=bottom] run return run function elemental_tools:generic/block/facing/stairs {states:8,facing:"east",half:"top",waterlogged:"$(waterlogged)"}

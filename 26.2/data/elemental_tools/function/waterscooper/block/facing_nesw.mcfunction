@@ -1,8 +1,5 @@
 ## Plumb blocks with specific facing (N/E/S/W/U/D) properties that match the outlined criteria.
 
-# Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
-
 # N/E/S/W - Big Dripleaf
 $execute if block ~ ~ ~ big_dripleaf[tilt=full] run return run setblock ~ ~ ~ big_dripleaf[facing=$(facing),tilt=full,waterlogged=$(waterlogged_next)]
 $execute if block ~ ~ ~ big_dripleaf[tilt=none] run return run setblock ~ ~ ~ big_dripleaf[facing=$(facing),tilt=none,waterlogged=$(waterlogged_next)]

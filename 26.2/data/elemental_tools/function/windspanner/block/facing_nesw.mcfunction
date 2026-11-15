@@ -1,7 +1,7 @@
 ## Rotate blocks with specific facing (N/E/S/W/U/D) properties that match the outlined criteria.
 
 # Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states)
+$scoreboard players set @s elemental_tools_durability_chance_maximum $(states_nesw)
 
 # N/E/S/W - Beehives
 $execute if block ~ ~ ~ bee_nest[honey_level=0] run return run setblock ~ ~ ~ bee_nest[honey_level=0,facing=$(facing_nesw_next)]
@@ -236,13 +236,13 @@ $execute if block ~ ~ ~ #minecraft:wooden_shelves[powered=false,waterlogged=fals
 $execute if block ~ ~ ~ #minecraft:wooden_shelves[powered=false,waterlogged=true] run return run function elemental_tools:generic/block/facing/wooden_shelves {states:4,facing:"$(facing_nesw_next)",powered:"false",side_chain:"unconnected",waterlogged:"true"}
 
 # Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states_2)
+$scoreboard players set @s elemental_tools_durability_chance_maximum $(states_neswd)
 
 # N/E/S/W/D - General
 $execute if block ~ ~ ~ hopper run return run setblock ~ ~ ~ hopper[facing=$(facing_neswd_next)]
 
 # Set Position
-$scoreboard players set @s elemental_tools_durability_chance_maximum $(states_3)
+$scoreboard players set @s elemental_tools_durability_chance_maximum $(states_neswud)
 
 # N/E/S/W/U/D - General
 $execute if block ~ ~ ~ barrel run return run setblock ~ ~ ~ barrel[facing=$(facing_neswud_next)]
