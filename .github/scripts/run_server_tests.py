@@ -172,7 +172,7 @@ class Server:
 
 
 def analyse(lines: list[str]) -> dict:
-    result = {"fails": [], "skips": 0, "counts": None, "result": None, "errors": [], "load_errors": [], "load_warnings": []}
+    result = {"fails": [], "skips": 0, "counts": None, "result": None, "errors": [], "load_errors": [], "load_warnings": [], "diag": []}
     for line in lines:
         if "ET_FAIL " in line:
             result["fails"].append(line.split("ET_FAIL ", 1)[1].strip())
@@ -182,6 +182,8 @@ def analyse(lines: list[str]) -> dict:
             result["counts"] = line.split("ET_COUNTS ", 1)[1].strip()
         elif "ET_RESULT " in line:
             result["result"] = line.split("ET_RESULT ", 1)[1].strip()
+        elif "ET_DIAG " in line:
+            result["diag"].append(line.split("ET_DIAG ", 1)[1].strip())
         elif "ET_ERROR " in line:
             result["errors"].append(line.split("ET_ERROR ", 1)[1].strip())
         elif any(name in line for name in PACK_NAMES):
@@ -257,6 +259,11 @@ def main() -> int:
         print(f"::error title=Pack failed to load ({args.version})::{escape(error)}")
     for error in found["errors"]:
         print(f"::error title=Test harness ({args.version})::{escape(error)}")
+    if found["diag"]:
+        print("---- diagnostics ----")
+        for entry in found["diag"]:
+            print(f"ET_DIAG {entry}")
+        print("---- end diagnostics ----")
     for failure in found["fails"]:
         print(f"::error title=Test failed ({args.version})::{escape(failure)}")
 
