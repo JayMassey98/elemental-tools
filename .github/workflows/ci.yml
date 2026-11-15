@@ -1,10 +1,10 @@
 name: CI
 
-# on:
+on:
 
   # TODO: Change this to main once the automated testing branch is merged.
-  # push:
-    # branches: [automated_testing]
+  push:
+    branches: [automated_testing]
 
   # Tuesday 19:00 UTC.
   # schedule:
@@ -92,3 +92,49 @@ jobs:
           --source-map build/source-map.json
           --cache-dir .spyglass-cache
           ${{ matrix.kind == 'snapshot' && '--allow-unsupported' || '' }}
+
+  # Run the tests on a real, headless Minecraft server for every target version.
+  # Snapshot failures are reported but never turn the workflow red; releases do.
+  server-tests:
+    name: Test (${{ matrix.id }})
+    needs: get-minecraft-versions
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.kind == 'snapshot' }}
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.get-minecraft-versions.outputs.matrix) }}
+
+    steps:
+
+      - uses: actions/checkout@v7
+
+      # Each Minecraft version needs its own Java (21 for 1.21.x, 25 for 26.x).
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java }}
+
+      # Server jars never change once published, so cache them by SHA-1.
+      - uses: actions/cache@v6
+        with:
+          path: .mc-cache
+          key: server-jar-${{ matrix.sha1 }}
+
+      - name: Run the tests on a Minecraft ${{ matrix.id }} server
+        run: >
+          python3 .github/scripts/run_server_tests.py
+          --version "${{ matrix.id }}"
+          --server-url "${{ matrix.server_url }}"
+          --sha1 "${{ matrix.sha1 }}"
+          --cache-dir .mc-cache
+          --repo .
+          --tests-dir tests
+          --work-dir server-run
+
+      - name: Keep the server log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: server-log-${{ matrix.id }}
+          path: server-run/server-output.log
+          if-no-files-found: ignore
