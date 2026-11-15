@@ -1,0 +1,75 @@
+name: Release
+
+# Push a tag such as v1.2.0 to publish a release:
+#   git tag v1.2.0 && git push origin v1.2.0
+# The tests must pass first. Tags with a dash (v1.2.0-beta.1) become pre-releases.
+# "Run workflow" (manual) builds the zip as a downloadable artifact only: nothing is published.
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  # Runs the whole CI workflow (it needs a `workflow_call:` trigger, see ci.yml).
+  # Snapshot jobs never fail it, release-version jobs do.
+  ci:
+    name: Tests
+    if: github.ref_type == 'tag'
+    uses: ./.github/workflows/ci.yml
+
+  package:
+    name: Build the data pack zip
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Build the zip
+        id: build
+        run: >
+          python3 .github/scripts/build_release_zip.py
+          --version "${{ github.ref_type == 'tag' && github.ref_name || format('dev-{0}', github.sha) }}"
+          --out dist
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.build.outputs.zip_name }}
+          path: ${{ steps.build.outputs.zip_path }}
+          if-no-files-found: error
+
+  publish:
+    name: Publish the GitHub release
+    if: github.ref_type == 'tag'
+    needs: [ci, package]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      # Releases must come from main, so an experimental branch can never ship.
+      - name: Check the tag is on main
+        run: |
+          git fetch origin main
+          if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
+            echo "::error title=Tag is not on main::$GITHUB_REF_NAME points at a commit that is not on main. Merge it first, then tag again."
+            exit 1
+          fi
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          flags=""
+          case "$GITHUB_REF_NAME" in *-*) flags="--prerelease" ;; esac
+          gh release create "$GITHUB_REF_NAME" dist/*.zip \
+            --title "$GITHUB_REF_NAME" --generate-notes --verify-tag $flags
