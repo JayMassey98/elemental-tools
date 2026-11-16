@@ -3,12 +3,18 @@ name: Release
 # Push a tag such as v1.2.0 to publish a release:
 #   git tag v1.2.0 && git push origin v1.2.0
 # The tests must pass first. Tags with a dash (v1.2.0-beta.1) become pre-releases.
-# "Run workflow" (manual) builds the zip as a downloadable artifact only: nothing is published.
+# A push to the branch below (and a manual "Run workflow") only builds the zip as a
+# downloadable artifact: nothing is published.
+#
+# TODO: when automated_testing is merged, change RELEASE_BRANCH and the push branch below to main.
 on:
   push:
     tags: ["v*"]
     branches: [automated_testing]
   workflow_dispatch:
+
+env:
+  RELEASE_BRANCH: automated_testing
 
 permissions:
   contents: read
@@ -52,12 +58,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Releases must come from main, so an experimental branch can never ship.
-      - name: Check the tag is on main
+      # Releases must come from the release branch, so an experimental branch can never ship.
+      - name: Check the tag is on ${{ env.RELEASE_BRANCH }}
         run: |
-          git fetch origin main
-          if ! git merge-base --is-ancestor "$GITHUB_SHA" origin/main; then
-            echo "::error title=Tag is not on main::$GITHUB_REF_NAME points at a commit that is not on main. Merge it first, then tag again."
+          git fetch origin "$RELEASE_BRANCH"
+          if ! git merge-base --is-ancestor "$GITHUB_SHA" "origin/$RELEASE_BRANCH"; then
+            echo "::error title=Tag is not on $RELEASE_BRANCH::$GITHUB_REF_NAME points at a commit that is not on $RELEASE_BRANCH. Merge it first, then tag again."
             exit 1
           fi
 

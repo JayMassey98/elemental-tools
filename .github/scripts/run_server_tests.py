@@ -63,14 +63,17 @@ LOG_LEVEL_RE = re.compile(r"/(ERROR|WARN|FATAL)\]")
 
 
 def widen_max_format(mcmeta_path: Path) -> None:
+    """Let a snapshot with a newer pack format than the declared max_format still load the pack."""
     data = json.loads(mcmeta_path.read_text(encoding="utf-8"))
     data["pack"]["max_format"] = WIDE_MAX_FORMAT
-    data["pack"].pop("supported_formats", None)
     mcmeta_path.write_text(json.dumps(data, indent=2), encoding="utf-8")
 
 
-def stage_data_pack(repo: Path, destination: Path) -> None:
-    """Copy the shipped pack: pack.mcmeta, data/, and every overlay folder."""
+def stage_data_pack(repo: Path, destination: Path, widen: bool) -> None:
+    """Copy the shipped pack: pack.mcmeta, data/, and every overlay folder.
+
+    Released versions are tested with pack.mcmeta exactly as shipped. Only snapshots (whose pack
+    format can be newer than max_format) get a widened max_format."""
     destination.mkdir(parents=True)
     shutil.copyfile(repo / "pack.mcmeta", destination / "pack.mcmeta")
     shutil.copytree(repo / "data", destination / "data")
@@ -78,7 +81,8 @@ def stage_data_pack(repo: Path, destination: Path) -> None:
     for entry in mcmeta.get("overlays", {}).get("entries", []):
         directory = entry["directory"]
         shutil.copytree(repo / directory, destination / directory)
-    widen_max_format(destination / "pack.mcmeta")
+    if widen:
+        widen_max_format(destination / "pack.mcmeta")
 
 
 # Files every tests pack must have. If they are missing, the tests folder was not fully updated.
@@ -202,6 +206,8 @@ def escape(text: str) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument("--version", required=True, help="Minecraft version id, for messages")
+    parser.add_argument("--kind", choices=["release", "snapshot"], default="release",
+                        help="snapshots get a widened max_format; releases are tested exactly as shipped")
     parser.add_argument("--server-url", required=True)
     parser.add_argument("--sha1", required=True)
     parser.add_argument("--cache-dir", default=".mc-cache")
@@ -223,7 +229,7 @@ def main() -> int:
 
     jar = Path(args.server_jar) if args.server_jar else download_server_jar(
         args.server_url, args.sha1, Path(args.cache_dir).resolve())
-    stage_data_pack(repo, datapacks / "elemental_tools")
+    stage_data_pack(repo, datapacks / "elemental_tools", widen=args.kind == "snapshot")
     test_count = stage_tests_pack(Path(args.tests_dir).resolve(), datapacks / "elemental_tools_test")
     (work / "eula.txt").write_text("eula=true\n", encoding="utf-8")
     (work / "server.properties").write_text(SERVER_PROPERTIES, encoding="utf-8")
