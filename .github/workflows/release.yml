@@ -1,10 +1,17 @@
 name: Release
 
-# Push a tag such as v1.2.0 to publish a release:
-#   git tag v1.2.0 && git push origin v1.2.0
-# The tests must pass first. Tags with a dash (v1.2.0-beta.1) become pre-releases.
-# A push to the branch below (and a manual "Run workflow") only builds the zip as a
-# downloadable artifact: nothing is published.
+# Two ways to publish a release (the tests must pass first either way):
+#
+#   1. Push a tag:                 git tag v1.2.0 && git push origin v1.2.0
+#   2. Actions > Release > Run workflow, and type a version such as v1.2.0.
+#      The workflow creates the tag for you. (This button only appears once this file is on the
+#      repository's default branch.)
+#
+# Tags with a dash (v1.2.0-beta.1) become pre-releases. The release notes are your optional text
+# plus every commit since the previous release.
+#
+# A push to the branch below, or running the workflow with the version left empty, only builds
+# the zip as a downloadable artifact: nothing is published.
 #
 # TODO: when automated_testing is merged, change RELEASE_BRANCH and the push branch below to main.
 on:
@@ -12,6 +19,15 @@ on:
     tags: ["v*"]
     branches: [automated_testing]
   workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to release, e.g. v1.2.0 (leave empty to only build the zip)"
+        required: false
+        type: string
+      notes:
+        description: "Optional text to put at the top of the release notes"
+        required: false
+        type: string
 
 env:
   RELEASE_BRANCH: automated_testing
@@ -19,16 +35,76 @@ env:
 permissions:
   contents: read
 
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
+  # Decides what this run is for, and checks the request before any work is done.
+  plan:
+    name: Plan the release
+    runs-on: ubuntu-latest
+    outputs:
+      publish: ${{ steps.plan.outputs.publish }}
+      tag: ${{ steps.plan.outputs.tag }}
+      prerelease: ${{ steps.plan.outputs.prerelease }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Work out the version
+        id: plan
+        env:
+          INPUT_VERSION: ${{ inputs.version }}
+        run: |
+          publish=false
+          tag="dev-${GITHUB_SHA::7}"
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            publish=true
+            tag="$GITHUB_REF_NAME"
+          elif [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] && [ -n "$INPUT_VERSION" ]; then
+            publish=true
+            tag="$INPUT_VERSION"
+            if [ "$GITHUB_REF_NAME" != "$RELEASE_BRANCH" ]; then
+              echo "::error title=Wrong branch::Run this workflow on $RELEASE_BRANCH to publish a release (it was run on $GITHUB_REF_NAME)."
+              exit 1
+            fi
+            if git ls-remote --exit-code --tags origin "refs/tags/$tag" >/dev/null 2>&1; then
+              echo "::error title=Tag exists::$tag already exists. Pick a new version."
+              exit 1
+            fi
+          fi
+          if [ "$publish" = true ]; then
+            if ! printf '%s' "$tag" | grep -Eq '^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.]+)?$'; then
+              echo "::error title=Bad version::'$tag' should look like v1.2.0 or v1.2.0-beta.1."
+              exit 1
+            fi
+            # Releases must come from the release branch, so an experimental branch can never ship.
+            git fetch origin "$RELEASE_BRANCH"
+            if ! git merge-base --is-ancestor "$GITHUB_SHA" "origin/$RELEASE_BRANCH"; then
+              echo "::error title=Not on $RELEASE_BRANCH::$tag points at a commit that is not on $RELEASE_BRANCH. Merge it first."
+              exit 1
+            fi
+          fi
+          prerelease=false
+          case "$tag" in *-*) prerelease=true ;; esac
+          echo "publish=$publish" >> "$GITHUB_OUTPUT"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "prerelease=$prerelease" >> "$GITHUB_OUTPUT"
+          echo "Plan: tag=$tag publish=$publish prerelease=$prerelease" >> "$GITHUB_STEP_SUMMARY"
+
   # Runs the whole CI workflow (it needs a `workflow_call:` trigger, see ci.yml).
   # Snapshot jobs never fail it, release-version jobs do.
   ci:
     name: Tests
-    if: github.ref_type == 'tag'
+    needs: plan
+    if: needs.plan.outputs.publish == 'true'
     uses: ./.github/workflows/ci.yml
 
   package:
     name: Build the data pack zip
+    needs: plan
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -37,7 +113,7 @@ jobs:
         id: build
         run: >
           python3 .github/scripts/build_release_zip.py
-          --version "${{ github.ref_type == 'tag' && github.ref_name || format('dev-{0}', github.sha) }}"
+          --version "${{ needs.plan.outputs.tag }}"
           --out dist
 
       - uses: actions/upload-artifact@v4
@@ -48,8 +124,8 @@ jobs:
 
   publish:
     name: Publish the GitHub release
-    if: github.ref_type == 'tag'
-    needs: [ci, package]
+    needs: [plan, ci, package]
+    if: needs.plan.outputs.publish == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -58,25 +134,26 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Releases must come from the release branch, so an experimental branch can never ship.
-      - name: Check the tag is on ${{ env.RELEASE_BRANCH }}
-        run: |
-          git fetch origin "$RELEASE_BRANCH"
-          if ! git merge-base --is-ancestor "$GITHUB_SHA" "origin/$RELEASE_BRANCH"; then
-            echo "::error title=Tag is not on $RELEASE_BRANCH::$GITHUB_REF_NAME points at a commit that is not on $RELEASE_BRANCH. Merge it first, then tag again."
-            exit 1
-          fi
-
-      - uses: actions/download-artifact@v8
+      - uses: actions/download-artifact@v4
         with:
           path: dist
           merge-multiple: true
 
-      - name: Create the release
+      - name: Write the release notes
+        env:
+          NOTES: ${{ inputs.notes }}
+        run: >
+          python3 .github/scripts/build_release_notes.py
+          --tag "${{ needs.plan.outputs.tag }}" --sha "$GITHUB_SHA"
+          --notes "$NOTES" --repo "$GITHUB_REPOSITORY" --out notes.md
+
+      - name: Create the release (and the tag, when it does not exist yet)
         env:
           GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.plan.outputs.tag }}
+          PRERELEASE: ${{ needs.plan.outputs.prerelease }}
         run: |
           flags=""
-          case "$GITHUB_REF_NAME" in *-*) flags="--prerelease" ;; esac
-          gh release create "$GITHUB_REF_NAME" dist/*.zip \
-            --title "$GITHUB_REF_NAME" --generate-notes --verify-tag $flags
+          [ "$PRERELEASE" = true ] && flags="--prerelease"
+          gh release create "$TAG" dist/*.zip --target "$GITHUB_SHA" \
+            --title "$TAG" --notes-file notes.md $flags
