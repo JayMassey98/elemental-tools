@@ -2,7 +2,7 @@ name: Release
 
 # Two ways to publish a release (the tests must pass first either way):
 #
-#   1. Push a tag:                 git tag v1.2.0 && git push origin v1.2.0
+#   1. Push a tag: git tag v1.2.0 && git push origin v1.2.0
 #   2. Actions > Release > Run workflow, and type a version such as v1.2.0.
 #      The workflow creates the tag for you. (This button only appears once this file is on the
 #      repository's default branch.)
