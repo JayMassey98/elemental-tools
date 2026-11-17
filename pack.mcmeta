@@ -21,6 +21,11 @@
         "max_format": 113
       },
       {
+        "directory": "26.3-snapshot-3",
+        "min_format": 108,
+        "max_format": 110
+      },
+      {
         "directory": "26.3-snapshot-2",
         "min_format": 108,
         "max_format": 109

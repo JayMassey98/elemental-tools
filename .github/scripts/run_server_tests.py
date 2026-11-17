@@ -60,6 +60,8 @@ initial-enabled-packs=vanilla,file/elemental_tools,file/elemental_tools_test
 
 # A line like "[12:00:00] [Server thread/ERROR]: ..." that mentions one of our packs.
 LOG_LEVEL_RE = re.compile(r"/(ERROR|WARN|FATAL)\]")
+# The start of a new log record, such as "[12:00:00] [Server thread/INFO]: ...".
+LOG_RECORD_RE = re.compile(r"^\[\d\d:\d\d:\d\d\]")
 
 
 def widen_max_format(mcmeta_path: Path) -> None:
@@ -177,7 +179,7 @@ class Server:
 
 def analyse(lines: list[str]) -> dict:
     result = {"fails": [], "skips": 0, "counts": None, "result": None, "errors": [], "load_errors": [], "load_warnings": [], "diag": []}
-    for line in lines:
+    for index, line in enumerate(lines):
         if "ET_FAIL " in line:
             result["fails"].append(line.split("ET_FAIL ", 1)[1].strip())
         elif "ET_SKIP " in line:
@@ -193,7 +195,13 @@ def analyse(lines: list[str]) -> dict:
         elif any(name in line for name in PACK_NAMES):
             level = LOG_LEVEL_RE.search(line)
             if level and level.group(1) in ("ERROR", "FATAL"):
-                result["load_errors"].append(line)
+                # The reason (the exact command that did not parse) is on the lines after this one.
+                detail = []
+                for following in lines[index + 1:index + 9]:
+                    if LOG_RECORD_RE.match(following):
+                        break
+                    detail.append(following.strip())
+                result["load_errors"].append("\n".join([line, *[d for d in detail if d]]))
             elif level:
                 result["load_warnings"].append(line)
     return result

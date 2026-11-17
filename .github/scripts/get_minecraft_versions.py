@@ -55,7 +55,7 @@ def fetch_json(url: str, retries: int = 4) -> dict:
 
 
 def select_versions(manifest: dict, release_from: str, snapshot_after: str,
-                    include_legacy_snapshots: bool) -> list[dict]:
+                    include_legacy_snapshots: bool, exclude: frozenset[str] = frozenset()) -> list[dict]:
     """Return manifest entries to test, sorted oldest to newest by releaseTime."""
     entries = {entry["id"]: entry for entry in manifest["versions"]}
 
@@ -74,6 +74,8 @@ def select_versions(manifest: dict, release_from: str, snapshot_after: str,
     selected = []
     for entry in manifest["versions"]:
         version_id, kind, released = entry["id"], entry["type"], entry["releaseTime"]
+        if version_id in exclude:
+            continue
         # Mojang uses a consistent "+00:00" ISO 8601 offset, so string comparison is safe.
         if kind == "release" and RELEASE_RE.match(version_id) and released >= release_floor:
             selected.append(entry)
@@ -119,6 +121,8 @@ def main() -> int:
                         help="include snapshots released after this version's release time")
     parser.add_argument("--legacy-snapshots", action="store_true",
                         help="also include pre-26.1 snapshot names (Stage 6)")
+    parser.add_argument("--exclude", nargs="*", default=[], metavar="ID",
+                        help="version ids to skip, such as April Fools snapshots")
     parser.add_argument("--manifest", default=MANIFEST_URL, help="manifest URL or local file path")
     args = parser.parse_args()
 
@@ -128,7 +132,8 @@ def main() -> int:
     else:
         manifest = fetch_json(args.manifest)
 
-    selected = select_versions(manifest, args.release_from, args.snapshot_after, args.legacy_snapshots)
+    selected = select_versions(manifest, args.release_from, args.snapshot_after, args.legacy_snapshots,
+                                frozenset(args.exclude))
     if not selected:
         raise SystemExit("No versions selected; refusing to emit an empty matrix")
     if len(selected) > MAX_MATRIX_JOBS:
