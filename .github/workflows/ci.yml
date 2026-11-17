@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@v7
       - name: Query Mojang's version manifest
         id: discover
-        run: python3 .github/scripts/get_minecraft_versions.py --release-from 1.21.9 --snapshot-after 26.3
+        run: python3 .github/scripts/get_minecraft_versions.py --release-from 1.21.9 --snapshot-after 1.21.9 --legacy-snapshots
 
   # Lint the pack with Spyglass against every target version.
   # Snapshot failures are reported but never turn the workflow red; releases do.

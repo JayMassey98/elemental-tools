@@ -16,14 +16,34 @@
   "overlays": {
     "entries": [
       {
+        "directory": "26.3-snapshot-6",
+        "min_format": 108,
+        "max_format": 113
+      },
+      {
+        "directory": "26.3-snapshot-2",
+        "min_format": 108,
+        "max_format": 109
+      },
+      {
         "directory": "26.2",
         "min_format": 88,
         "max_format": [ 107, 1 ]
       },
       {
+        "directory": "26.2-snapshot-2",
+        "min_format": [ 101, 2 ],
+        "max_format": [ 101, 2 ]
+      },
+      {
         "directory": "26.1.2",
         "min_format": 88,
         "max_format": [ 101, 1 ]
+      },
+      {
+        "directory": "26.1-snapshot-4",
+        "min_format": 95,
+        "max_format": [ 97, 1 ]
       },
       {
         "directory": "1.21.11",

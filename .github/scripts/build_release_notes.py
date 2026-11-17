@@ -5,7 +5,11 @@ GitHub's built-in "generate notes" only lists merged pull requests, so commits p
 branch would be missing. This lists the commits themselves.
 
 Usage:
-  build_release_notes.py --tag v1.2.0 --sha <commit> [--notes "text"] --out notes.md [--repo owner/name]
+  build_release_notes.py --tag <label> --sha <commit> [--notes "text"] --out notes.md [--repo owner/name]
+                         [--summary $GITHUB_STEP_SUMMARY]
+
+--tag is only a label for the compare link (a release tag or a branch name). With --summary the
+notes are also written to the run's summary page inside a code block, ready to copy.
 """
 
 from __future__ import annotations
@@ -41,6 +45,7 @@ def main() -> int:
     parser.add_argument("--notes", default="")
     parser.add_argument("--out", required=True)
     parser.add_argument("--repo", default="", help="owner/name, for the compare link")
+    parser.add_argument("--summary", default="", help="file to append the notes to as a copyable code block")
     args = parser.parse_args()
 
     previous = previous_tag(args.tag, args.sha)
@@ -50,7 +55,7 @@ def main() -> int:
     for line in log.splitlines():
         subject, _, short = line.rpartition("\t")
         if subject and not SKIP.match(subject):
-            commits.append(f"- {subject} (`{short}`)")
+            commits.append(f"- {subject} ({short})")
     shown = commits[:MAX_COMMITS]
 
     parts = []
@@ -61,7 +66,12 @@ def main() -> int:
         parts.append(f"_…and {len(commits) - len(shown)} more commits._")
     if previous and args.repo:
         parts.append(f"**Full changelog**: https://github.com/{args.repo}/compare/{previous}...{args.tag}")
-    Path(args.out).write_text("\n\n".join(parts) + "\n", encoding="utf-8")
+    text = "\n\n".join(parts) + "\n"
+    Path(args.out).write_text(text, encoding="utf-8")
+    if args.summary:
+        since = f"since `{previous}`" if previous else "(no earlier release found)"
+        with open(args.summary, "a", encoding="utf-8") as handle:
+            handle.write(f"### Changelog {since}\n\nCopy this into your GitHub release:\n\n````markdown\n{text}````\n")
     print(f"Release notes for {args.tag}: {len(shown)} commits since {previous or 'the beginning'}")
     return 0
 
