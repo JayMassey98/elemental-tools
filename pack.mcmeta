@@ -11,23 +11,23 @@
       }
     ],
     "min_format": 88,
-    "max_format": [ 121, 0 ]
+    "max_format": [ 128, 0 ]
   },
   "overlays": {
     "entries": [
       {
         "directory": "26.3-snapshot-6",
-        "min_format": 108,
+        "min_format": 88,
         "max_format": 113
       },
       {
         "directory": "26.3-snapshot-3",
-        "min_format": 108,
+        "min_format": 88,
         "max_format": 110
       },
       {
         "directory": "26.3-snapshot-2",
-        "min_format": 108,
+        "min_format": 88,
         "max_format": 109
       },
       {
@@ -37,7 +37,7 @@
       },
       {
         "directory": "26.2-snapshot-2",
-        "min_format": [ 101, 2 ],
+        "min_format": 88,
         "max_format": [ 101, 2 ]
       },
       {
@@ -47,8 +47,13 @@
       },
       {
         "directory": "26.1-snapshot-4",
-        "min_format": 95,
+        "min_format": 88,
         "max_format": [ 97, 1 ]
+      },
+      {
+        "directory": "26.1-snapshot-2",
+        "min_format": 88,
+        "max_format": 96
       },
       {
         "directory": "1.21.11",
