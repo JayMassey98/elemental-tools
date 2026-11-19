@@ -1,0 +1,8 @@
+# =============================================================================
+# Submodules
+# =============================================================================
+
+[submodule ".armour"]
+	path = .armour
+	url = https://github.com/JayMassey98/automated-regression-minecraft-overlay-update-runner.git
+	branch = automated_testing

@@ -27,7 +27,7 @@ NAME = "Elemental-Tools"
 
 # Top-level names that are never shipped.
 EXCLUDED = {
-    ".github", "tests", "spyglass.json",
+    ".github", ".armour", "tests", "spyglass.json", "armour.json",
     ".git", ".gitignore", ".gitattributes", ".vs", ".vscode", ".idea",
     "node_modules", "build", "dist", "server-run", ".mc-cache", ".spyglass-cache",
 }

@@ -32,9 +32,11 @@ jobs:
       count: ${{ steps.discover.outputs.count }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          submodules: true
       - name: Query Mojang's version manifest
         id: discover
-        run: python3 .github/scripts/get_minecraft_versions.py --release-from 1.21.9 --snapshot-after 1.21.9 --legacy-snapshots --exclude 26w14a
+        run: python3 .armour/scripts/get_minecraft_versions.py --release-from 1.21.9 --snapshot-after 1.21.9 --legacy-snapshots --exclude 26w14a
 
   # Lint the pack with Spyglass against every target version.
   # Snapshot failures are reported but never turn the workflow red; releases do.
@@ -51,15 +53,17 @@ jobs:
     steps:
 
       - uses: actions/checkout@v7
+        with:
+          submodules: true
 
       - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: .github/scripts/spyglass/package-lock.json
+          cache-dependency-path: .armour/scripts/spyglass/package-lock.json
 
       - name: Install Spyglass
-        working-directory: .github/scripts/spyglass
+        working-directory: .armour/scripts/spyglass
         run: npm ci --no-audit --no-fund
 
       # Server jars never change once published, so cache them by SHA-1.
@@ -73,7 +77,7 @@ jobs:
       # The data pack format is read from version.json inside the server jar.
       - name: Build the pack for ${{ matrix.id }}
         run: >
-          python3 .github/scripts/build_version_pack.py
+          python3 .armour/scripts/build_version_pack.py
           --server-url "${{ matrix.server_url }}"
           --sha1 "${{ matrix.sha1 }}"
           --cache-dir .mc-cache
@@ -89,7 +93,7 @@ jobs:
 
       - name: Spyglass lint
         run: >
-          node .github/scripts/spyglass/lint.mjs
+          node .armour/scripts/spyglass/lint.mjs
           --root build/pack
           --game-version "${{ matrix.id }}"
           --source-map build/source-map.json
@@ -110,6 +114,8 @@ jobs:
     steps:
 
       - uses: actions/checkout@v7
+        with:
+          submodules: true
 
       # Each Minecraft version needs its own Java (21 for 1.21.x, 25 for 26.x).
       - uses: actions/setup-java@v4
@@ -125,7 +131,7 @@ jobs:
 
       - name: Run the tests on a Minecraft ${{ matrix.id }} server
         run: >
-          python3 .github/scripts/run_server_tests.py
+          python3 .armour/scripts/run_server_tests.py
           --version "${{ matrix.id }}"
           --server-url "${{ matrix.server_url }}"
           --sha1 "${{ matrix.sha1 }}"
