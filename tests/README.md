@@ -13,9 +13,9 @@ on every Minecraft version. One test file per source function, mirroring `data/`
    Then `/reload`.
 2. Run `/function armour:harness/start`
 3. The results are printed in chat (and in `logs/latest.log`):
-   - `ET_FAIL <test> - <what went wrong>` for each failure
-   - `ET_SKIP <test>` for tests not written yet (skipped, never counted as passed)
-   - `ET_COUNTS passed=.. failed=.. skipped=..` and finally `ET_RESULT PASSED` or `ET_RESULT FAILED`
+   - `ARMOUR_FAIL <test> - <what went wrong>` for each failure
+   - `ARMOUR_SKIP <test>` for tests not written yet (skipped, never counted as passed)
+   - `ARMOUR_COUNTS passed=.. failed=.. skipped=..` and finally `ARMOUR_RESULT PASSED` or `ARMOUR_RESULT FAILED`
 
 The tests build their own stone platform at 0 150 0 (inside the chunk at 0 0), so any world works.
 
@@ -41,7 +41,7 @@ Helpers from this pack:
 
 Helpers from ARMOUR's shared harness (see ARMOUR's README for the full list):
 
-- `armour:harness/spawn_holder` summons the armor stand (tag `et_test_holder`) that stands in for the player
+- `armour:harness/spawn_holder` summons the armor stand (tag `armour.holder`) that stands in for the player
 - `armour:assert/block {block:"..."}` fails the test unless the block (and the states you list) match
 - `armour:harness/fail {message:"..."}` fails the test with a message (no double quotes or @ in messages)
 - `armour:harness/todo` marks the test as not written yet

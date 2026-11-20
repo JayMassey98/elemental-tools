@@ -3,6 +3,6 @@
 ## Run positioned at the test position, with a holder spawned.
 
 $setblock ~ ~ ~ $(block)
-scoreboard players reset @e[tag=et_test_holder,limit=1] elemental_tools_durability_chance_maximum
-$execute as @e[tag=et_test_holder,limit=1] at @s run function elemental_tools:generic/invoke_block_state_setup {tool:"$(tool)"}
-$execute unless score @e[tag=et_test_holder,limit=1] elemental_tools_durability_chance_maximum matches $(expected) run function armour:harness/fail {message:"$(tool) on $(block) should set the durability maximum to $(expected)"}
+scoreboard players reset @e[tag=armour.holder,limit=1] elemental_tools_durability_chance_maximum
+$execute as @e[tag=armour.holder,limit=1] at @s run function elemental_tools:generic/invoke_block_state_setup {tool:"$(tool)"}
+$execute unless score @e[tag=armour.holder,limit=1] elemental_tools_durability_chance_maximum matches $(expected) run function armour:harness/fail {message:"$(tool) on $(block) should set the durability maximum to $(expected)"}
